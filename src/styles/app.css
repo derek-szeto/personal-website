@@ -1,0 +1,29 @@
+@layer theme, base, legacy, components, utilities;
+@import 'tailwindcss/theme.css' layer(theme);
+@import 'tailwindcss/preflight.css' layer(base);
+@import './index.css' layer(legacy);
+@import './forest.css' layer(legacy);
+@import './sheep.css' layer(legacy);
+@import './photos.css' layer(legacy);
+@import './intro.css' layer(legacy);
+@import './tech.css' layer(components);
+@import './contact.css' layer(components);
+@import 'tailwindcss/utilities.css' layer(utilities);
+
+@source '../';
+@source not '../../artifacts';
+
+@theme inline {
+  --color-canvas: var(--page);
+  --color-panel: var(--surface);
+  --color-ink: var(--text);
+  --color-subtle: var(--muted);
+  --color-line: var(--border);
+  --color-magic: var(--accent);
+  --color-petal: var(--rose);
+  --font-sans: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'Cascadia Code', 'SFMono-Regular', Consolas, monospace;
+  --shadow-magic: 0 0 0 1px color-mix(in srgb, var(--accent) 12%, transparent), 0 12px 35px #042b2710;
+}
+
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));

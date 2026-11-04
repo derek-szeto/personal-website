@@ -1,0 +1,26 @@
+.contact-section { padding-block:56px; }
+.contact-board { display:grid; grid-template-columns:minmax(210px,.85fr) minmax(0,1.65fr); gap:45px; padding:40px; background-image:radial-gradient(ellipse at 0 100%,color-mix(in srgb,var(--accent) 9%,transparent),transparent 55%); }
+.contact-board::before { content:''; position:absolute; top:14px; left:14px; width:10px; height:10px; border-left:1px solid var(--accent); border-top:1px solid var(--accent); pointer-events:none; }
+.contact-board::after { content:''; position:absolute; bottom:14px; right:14px; width:10px; height:10px; border-right:1px solid var(--rose); border-bottom:1px solid var(--rose); pointer-events:none; }
+.contact-identity { min-height:310px; }
+.contact-eyebrow { display:flex; align-items:center; gap:10px; margin-top:5px; }
+.contact-eyebrow::before { content:''; width:5px; height:5px; background:var(--rose); box-shadow:0 0 12px color-mix(in srgb,var(--rose) 40%,transparent); }
+.contact-identity h2 { font-size:clamp(2.5rem,4.3vw,4.3rem); line-height:1; margin:25px 0 0; }
+.contact-garden { position:relative; flex:1; min-height:155px; max-width:285px; margin-top:20px; }
+.contact-garden .botanical { position:absolute; bottom:-5px; left:-20px; width:225px; }
+.contact-garden .pixel-sheep { position:absolute; width:155px; right:-8px; bottom:8px; max-width:none; }
+.contact-garden-star { position:absolute; right:25px; top:25px; color:var(--rose); font-size:1.3rem; }
+.contact-card-grid { align-content:stretch; }
+.contact-method { min-height:152px; padding:22px; text-decoration:none; box-shadow:inset 0 1px 0 color-mix(in srgb,var(--accent) 4%,transparent); }
+.contact-method:hover { background:color-mix(in srgb,var(--accent) 5%,var(--page)); }
+.contact-method-top { margin-bottom:24px; }
+.contact-method-icon { display:grid; place-items:center; width:38px; height:38px; border:1px solid var(--border); background:var(--surface); color:var(--accent); border-radius:10px; }
+.contact-method-arrow { color:var(--muted); margin-top:2px; }
+.contact-method-label { margin-bottom:7px; }
+.contact-method-value { overflow-wrap:anywhere; line-height:1.45; letter-spacing:-.02em; }
+.contact-method[data-channel=instagram] .contact-method-icon { color:var(--rose); background:var(--rose-soft); border-color:color-mix(in srgb,var(--rose) 20%,var(--border)); }
+.contact-method[data-channel=phone] .contact-method-icon { color:var(--rose); }
+@media(max-width:1000px) { .contact-board { padding:30px; gap:28px; grid-template-columns:minmax(170px,.8fr) minmax(0,1.6fr); } .contact-method { padding:18px; } .contact-method-value { font-size:.8rem; } }
+@media(max-width:760px) { .contact-board { grid-template-columns:1fr; padding:28px; gap:25px; } .contact-identity { min-height:175px; } .contact-identity h2 { margin-top:18px; font-size:3rem; } .contact-garden { position:absolute; width:160px; height:100px; min-height:0; right:-10px; bottom:-5px; margin:0; } .contact-garden .botanical { width:140px; left:0; } .contact-garden .pixel-sheep { width:90px; right:-4px; bottom:8px; } .contact-garden-star { top:0; right:25px; font-size:1rem; } }
+@media(max-width:639px) { .contact-section { padding-block:35px; } .contact-method { min-height:120px; padding:18px; } .contact-method-top { margin-bottom:14px; } .contact-method-value { font-size:.9rem; } }
+@media(max-width:380px) { .contact-board { padding:24px 20px; } .contact-garden { width:125px; right:-10px; opacity:.8; } .contact-garden .botanical { width:115px; } .contact-garden .pixel-sheep { width:75px; } .contact-identity h2 { font-size:2.5rem; } }

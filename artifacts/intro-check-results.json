@@ -1,0 +1,25 @@
+{
+  "passed": [
+    "Background inert and skip focused",
+    "Automatic exit restores scrolling and focus",
+    "Tailwind typography and spacing are applied",
+    "Six sheep links and new botanical artwork render",
+    "Dark theme colors remain correct",
+    "3D forest with new shrubs renders",
+    "Sheep hover animation survives Tailwind migration",
+    "Sheep animation pause works",
+    "Intro plays once per tab session",
+    "Replay and Skip work",
+    "Escape skips intro",
+    "Reduced motion bypasses intro",
+    "Botanical animation respects reduced motion",
+    "Photo deep links bypass intro",
+    "Project page bypasses intro",
+    "Project dialogs remain keyboard accessible",
+    "Mobile title and skip fit screen",
+    "Mobile layout has no horizontal overflow",
+    "Mobile navigation opens",
+    "Mobile navigation reaches interests and closes",
+    "No browser runtime errors"
+  ]
+}
