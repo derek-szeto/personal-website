@@ -1,0 +1,7 @@
+﻿{
+    "name":  "Waylay",
+    "role":  "Duelist",
+    "source":  "https://media.valorant-api.com/agents/df1cb487-4902-002e-5c17-d28e83e78588/displayicon.png",
+    "metadata":  "https://valorant-api.com/v1/agents?isPlayableCharacter=true",
+    "note":  "Matching pre-existing transparent portrait; no image editing applied."
+}

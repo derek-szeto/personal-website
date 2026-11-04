@@ -1,0 +1,83 @@
+/* Self-hosted Latin fonts. Sources and SIL licenses: public/fonts/. */
+@font-face { font-family:'DM Serif Display'; font-style:normal; font-weight:400; font-display:swap; src:url('/fonts/dm-serif-display-latin-400.woff2') format('woff2'); }
+@font-face { font-family:'Bricolage Grotesque'; font-style:normal; font-weight:400 700; font-display:swap; src:url('/fonts/bricolage-grotesque-latin-400-700.woff2') format('woff2'); }
+@font-face { font-family:'Work Sans'; font-style:normal; font-weight:400 600; font-display:swap; src:url('/fonts/work-sans-latin-400-600.woff2') format('woff2'); }
+@font-face { font-family:'Jost'; font-style:normal; font-weight:400 600; font-display:swap; src:url('/fonts/jost-latin-400-600.woff2') format('woff2'); }
+
+:root {
+  /* One role per family, shared across every page. */
+  --type-display:'DM Serif Display',Georgia,serif;
+  --type-heading:'Bricolage Grotesque',Arial,sans-serif;
+  --type-body:'Work Sans','Segoe UI',sans-serif;
+  --type-ui:'Jost','Segoe UI',sans-serif;
+  --text-body:1.125rem;
+  --text-small:1rem;
+  --text-label:.875rem;
+  --text-control:1rem;
+  --title-display:clamp(3rem,6vw,5.25rem);
+  --title-section:clamp(1.75rem,2.8vw,2.125rem);
+  --title-card:1.25rem;
+}
+
+body { font-family:var(--type-body); font-size:var(--text-body); line-height:1.7; font-optical-sizing:auto; }
+button,input,select,textarea { font-family:var(--type-ui); }
+h1,h2,h3,h4 { font-family:var(--type-heading); font-weight:600; line-height:1.25; letter-spacing:-.025em; }
+
+/* Feature titles carry the magical, editorial side of the site. */
+.hero h1,.projects-page #projects-title,.interests-page-heading h1,.contact-identity h2 {
+  font-family:var(--type-display); font-size:var(--title-display); font-weight:400; line-height:1.08; letter-spacing:-.035em;
+}
+.hero h1 .name-star { margin-left:.25em; font-size:.3em; }
+.intro-name h2 { font-family:var(--type-display); font-size:clamp(5.5rem,14vw,12rem); font-weight:400; line-height:.96; letter-spacing:-.04em; }
+.intro-name h2 > span { padding-bottom:.035em; }
+.interest-about-initials { font-family:var(--type-display); font-weight:400; letter-spacing:-.025em; }
+
+/* Section titles and card titles share a hierarchy, including themed panels. */
+.section-heading h2,.music-section-heading h2,.interests-stream .preference-card h2,.valorant-heading h2 { font-family:var(--type-heading); font-size:var(--title-section); font-weight:600; line-height:1.25; letter-spacing:-.025em; }
+.project-content h3,.skill-card h3,.music-artists-card h3,.music-favorites-card h3,.music-now-text h3,.valorant-agent-copy h4,.valorant-agents-heading h3,.valorant-experience h3 { font-family:var(--type-heading); font-size:var(--title-card); font-weight:600; line-height:1.35; letter-spacing:-.015em; }
+.interest-about-copy h2,.valorant-player-identity h3 { font-family:var(--type-heading); font-size:clamp(1.5rem,3vw,2rem); font-weight:600; line-height:1.2; letter-spacing:-.025em; }
+.valorant-stat strong { font-family:var(--type-heading); font-weight:600; letter-spacing:-.015em; font-variant-numeric:tabular-nums; }
+.quest-dialog h2 { font-family:var(--type-heading); font-weight:600; letter-spacing:-.025em; }
+
+.hero .hero-introduction,.about-copy,.project-content > p:not(.card-category),.skill-card p,.interest-about-copy > p:not(.interest-overline),.preference-card > p,.valorant-experience p,.valorant-rank-description { font-family:var(--type-body); font-size:var(--text-body); line-height:1.7; }
+.contact-method-value,.music-track-text strong,.music-artist,.music-now-text p { font-family:var(--type-body); font-size:var(--text-small); font-weight:400; line-height:1.5; letter-spacing:0; }
+.contact-method-value,.music-track-text strong { font-weight:500; }
+.music-track-text strong,.music-artist { font-size:var(--text-body); }
+.valorant-agent-copy p,.valorant-player-identity p,.music-track-text > span { font-family:var(--type-body); font-size:var(--text-small); line-height:1.5; }
+
+/* Geometric UI text stays readable; accents come from spacing, not extra fonts. */
+.adventure-header .nav-links a,.button,.button-primary,.menu-toggle,.theme-switch,.scene-selector button,.interests-navigation a,.quest-details,.project-filters button,.music-listen-link,.music-profile-link,.music-retry,.interest-photo-link,.explore-label { font-family:var(--type-ui); font-size:var(--text-control); font-weight:500; line-height:1.4; letter-spacing:.025em; }
+.brand,.brand-copy { font-family:var(--type-ui); font-weight:600; letter-spacing:-.015em; }
+.brand-mark { font-family:var(--type-ui); font-weight:600; }
+.explore-directory-heading h2 { font-family:var(--type-heading); font-weight:600; font-size:1.125rem; letter-spacing:-.015em; }
+.eyebrow,.card-category,.contact-eyebrow,.contact-method-label,.interest-overline,.valorant-heading-label,.valorant-player-label,.valorant-stat > span,.valorant-agents-heading > span { font-family:var(--type-ui); font-size:var(--text-label); font-weight:500; line-height:1.55; letter-spacing:.07em; }
+.valorant-agent-share,.valorant-player-card > span,.music-now-heading p,.music-refresh-label,.results-count { font-family:var(--type-ui); font-size:var(--text-label); font-weight:400; line-height:1.5; letter-spacing:.025em; font-variant-numeric:tabular-nums; }
+.photo-card figcaption,.photo-lightbox-caption,.forest-scene-caption { font-family:var(--type-ui); font-style:normal; font-size:var(--text-small); font-weight:500; line-height:1.5; letter-spacing:.015em; }
+.photo-card figcaption span,.photo-lightbox-caption span,.site-footer p,.site-footer a,.scene-coordinate,.intro-topline,.intro-bottomline { font-family:var(--type-ui); font-size:var(--text-label); font-weight:400; line-height:1.5; }
+.intro-topline { font-size:1rem; font-weight:600; letter-spacing:.02em; }
+.intro-bottomline { letter-spacing:.07em; }
+.interests-home,.tags li { font-family:var(--type-ui); font-size:var(--text-small); font-weight:500; }
+
+/* Supporting content follows the same readable floor as the main sections. */
+.photo-coming-soon,.placeholder-label,.quest-dialog > p,.music-artists-empty p,.music-favorites-empty p,.preference-list { font-family:var(--type-body); font-size:var(--text-body); line-height:1.7; }
+.interests-page-heading p,.project-search input,.scene-loading,.scene-hint,.village-3d-footer,.text-link,.village-return,.forest-trail,.hero-footnote { font-size:var(--text-small); line-height:1.6; }
+.brand-mark { font-size:var(--text-label); }
+.project-search input { min-height:52px; }
+.button,.button-primary,.button-secondary,.scene-selector button,.project-filters button,.quest-details { min-height:48px; }
+.button-arrow { width:38px; height:38px; }
+.quest-details { padding-block:14px; }
+.interests-home,.village-return { min-height:44px; padding-block:10px; }
+.site-footer a { display:inline-flex; align-items:center; min-height:44px; }
+.intro-replay { width:48px; height:48px; }
+.skip-link { font-size:1rem; }
+
+@media(max-width:760px) {
+  .hero h1 { font-size:clamp(2.75rem,10vw,4.25rem); }
+  .interests-page-heading h1 { font-size:clamp(2.5rem,9vw,3.5rem); }
+  .contact-identity h2 { font-size:clamp(2.75rem,10vw,3.75rem); }
+  .interests-navigation a { font-size:var(--text-control); letter-spacing:0; }
+}
+@media(max-width:600px) {
+  .intro-name h2 { font-size:clamp(4.5rem,21vw,7rem); line-height:.98; }
+  .intro-bottomline { font-size:var(--text-label); letter-spacing:.04em; }
+}

@@ -1,0 +1,36 @@
+[
+  {
+    "filename": "ascendant-3.png",
+    "tierName": "ASCENDANT 3",
+    "tier": 23,
+    "divisionName": "ASCENDANT",
+    "source": "https://media.valorant-api.com/competitivetiers/03621f52-342b-cf4e-4f86-9350a49c6d04/23/largeicon.png",
+    "metadata": "https://valorant-api.com/v1/competitivetiers",
+    "collectionUuid": "03621f52-342b-cf4e-4f86-9350a49c6d04",
+    "assetObjectName": "Episode5_CompetitiveTierDataTable",
+    "width": 256,
+    "height": 256,
+    "hasTransparency": true,
+    "bytes": 25814,
+    "sha256": "fe0c4ab70d2c6e4bef9c961e3dba00e21a311be233365dffa64d580a78ea37e7",
+    "retrievedAt": "2026-11-02T08:59:55.5169685Z",
+    "note": "Riot Games rank artwork served by the independent Valorant-API asset mirror. Static local asset; no runtime API request."
+  },
+  {
+    "filename": "immortal-1.png",
+    "tierName": "IMMORTAL 1",
+    "tier": 24,
+    "divisionName": "IMMORTAL",
+    "source": "https://media.valorant-api.com/competitivetiers/03621f52-342b-cf4e-4f86-9350a49c6d04/24/largeicon.png",
+    "metadata": "https://valorant-api.com/v1/competitivetiers",
+    "collectionUuid": "03621f52-342b-cf4e-4f86-9350a49c6d04",
+    "assetObjectName": "Episode5_CompetitiveTierDataTable",
+    "width": 256,
+    "height": 256,
+    "hasTransparency": true,
+    "bytes": 25163,
+    "sha256": "dbdf2329bb10fa0beced94893f5df776667c919ac182891937369828a3af7f81",
+    "retrievedAt": "2026-11-02T08:59:55.7945780Z",
+    "note": "Riot Games rank artwork served by the independent Valorant-API asset mirror. Static local asset; no runtime API request."
+  }
+]

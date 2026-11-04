@@ -1,0 +1,54 @@
+/* A compact project collection with calm, keyboard-visible controls. */
+.project-card { --project-media-height:220px; display:flex; flex-direction:column; min-width:0; height:100%; }
+.project-card > .project-art { flex:0 0 var(--project-media-height); height:var(--project-media-height); min-width:0; }
+.project-card .project-content { display:flex; flex:1; flex-direction:column; min-width:0; padding:22px; }
+.project-card .project-content h3 { margin-bottom:12px; font-size:var(--title-card,20px); overflow-wrap:anywhere; }
+.project-card .project-summary { flex:1; margin:0; font-size:var(--text-body,18px); }
+.project-card .tags { margin-top:18px; }
+.project-card .tags li,.project-dialog .tags li { max-width:100%; font-size:var(--text-small,16px); overflow-wrap:anywhere; }
+.project-card .quest-details { flex-shrink:0; margin-top:20px; }
+.projects-page .project-art { height:var(--project-media-height); padding:0; }
+.projects-page .project-art .compact-forest { position:absolute; top:50%; left:0; width:100%; height:144px; transform:translateY(-50%); }
+.projects-page .journal-tools { padding:22px; }
+.project-tool-row { display:grid; grid-template-columns:minmax(0,1fr) minmax(180px,240px); align-items:end; gap:18px; }
+.projects-page .project-search,.project-technology { display:grid; min-width:0; gap:8px; }
+.project-tool-label { color:var(--muted); font:500 var(--text-small,16px)/1.5 var(--type-ui); }
+.project-search-shell { display:grid; grid-template-columns:minmax(0,1fr) 44px; align-items:center; gap:4px; padding-right:4px; border:1px solid var(--border); border-radius:12px; background:var(--page); transition:border-color 240ms var(--ease-out,ease-out),box-shadow 240ms var(--ease-out,ease-out); }
+.projects-page .project-search input { min-width:0; min-height:52px; padding:12px 14px; border:0; border-radius:12px; background:transparent; font:var(--text-control,16px)/1.5 var(--type-ui); }
+.projects-page .project-search input:focus-visible { outline:none; }
+.project-search input::-webkit-search-cancel-button { -webkit-appearance:none; }
+.project-search-shell:focus-within { border-color:var(--accent); box-shadow:0 0 0 2px color-mix(in srgb,var(--accent) 28%,transparent); }
+.project-search-clear { display:grid; place-items:center; width:44px; height:44px; padding:0; border:1px solid transparent; border-radius:8px; background:transparent; color:var(--muted); }
+.project-filter-bar { display:flex; flex-wrap:wrap; align-items:flex-start; justify-content:space-between; gap:12px 20px; margin-top:18px; }
+.projects-page .project-filters { gap:8px; margin-top:0; }
+.projects-page .project-filters button { min-height:48px; padding:10px 15px; font:500 var(--text-control,16px)/1.5 var(--type-ui); }
+.projects-page .project-filters button:is(:hover,:focus-visible):not([aria-pressed=true]) { background:var(--tag); border-color:var(--accent); }
+.project-reset { min-height:48px; padding:10px 14px; border:1px solid var(--border); border-radius:10px; background:transparent; color:var(--muted); font:500 var(--text-control,16px)/1.5 var(--type-ui); }
+.project-search-clear,.project-reset { transition:background-color 240ms var(--ease-out,ease-out),border-color 240ms var(--ease-out,ease-out),color 240ms var(--ease-out,ease-out),box-shadow 240ms var(--ease-out,ease-out); }
+.project-search-clear:is(:hover,:focus-visible):not(:disabled),.project-reset:is(:hover,:focus-visible):not(:disabled) { border-color:var(--accent); background:var(--tag); color:var(--text); }
+.project-search-clear:focus-visible,.project-reset:focus-visible { outline:2px solid var(--accent); outline-offset:3px; }
+.project-search-clear:active:not(:disabled),.project-reset:active:not(:disabled) { background:var(--art); }
+.project-search-clear:disabled,.project-reset:disabled { cursor:default; opacity:.45; }
+.projects-page .results-count { font-size:var(--text-small,16px); }
+.projects-page .project-grid { position:relative; }
+.project-empty-state h2 { margin-bottom:22px; font-size:var(--title-card,20px); }
+.project-dialog { width:min(680px,calc(100% - 32px)); padding:76px 32px 32px; }
+.project-dialog h2 { padding:0; font-size:clamp(1.5rem,4vw,2rem); line-height:1.3; overflow-wrap:anywhere; }
+.project-dialog .project-dialog-description { margin:0; color:var(--muted); font:var(--text-body,18px)/1.7 var(--type-body); }
+.project-detail-list { display:grid; gap:10px; margin:22px 0 0; padding-left:22px; color:var(--text); font:var(--text-body,18px)/1.65 var(--type-body); list-style:disc; }
+.project-detail-list li { padding-left:3px; overflow-wrap:anywhere; }
+.project-detail-list li::marker { color:var(--accent); }
+.project-dialog .project-links { gap:12px; margin-top:26px; }
+.project-dialog .project-links a { min-width:0; max-width:100%; overflow-wrap:anywhere; }
+.project-card .project-art.project-art-image { height:var(--project-media-height); padding:12px; background:#fbe7cf; }
+.project-art-image > img { display:block; width:100%; height:100%; object-fit:contain; }
+.project-cropped-image { display:block; max-width:100%; overflow:hidden; }
+.project-art-image > .project-cropped-image { width:100%; height:100%; }
+.project-card .project-art.project-art-cover { display:block; height:var(--project-media-height); padding:0; }
+.project-card .project-art-cover > :is(img,.project-cropped-image) { width:100%; height:100%; object-fit:cover; }
+.project-image-gallery { display:grid; gap:12px; margin-top:24px; }
+.project-image-gallery figure { margin:0; padding:10px; border:1px solid var(--border); border-radius:10px; background:#fbe7cf; }
+.project-image-gallery :is(img,.project-cropped-image) { display:block; width:100%; height:260px; max-width:100%; object-fit:contain; }
+@media(max-width:760px) { .project-tool-row { grid-template-columns:1fr; gap:16px; } .project-filter-bar { gap:14px; } }
+@media(max-width:600px) { .projects-page .journal-tools { padding:18px; } .project-card .project-content { padding:20px; } .projects-page .project-filters button { padding-inline:13px; } .project-dialog { padding:76px 22px 26px; } }
+@media(prefers-reduced-motion:reduce) { .project-search-shell,.project-search-clear,.project-reset { transition:none; } }

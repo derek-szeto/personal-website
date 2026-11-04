@@ -8,19 +8,40 @@
 .contact-identity h2 { font-size:clamp(2.5rem,4.3vw,4.3rem); line-height:1; margin:25px 0 0; }
 .contact-garden { position:relative; flex:1; min-height:155px; max-width:285px; margin-top:20px; }
 .contact-garden .botanical { position:absolute; bottom:-5px; left:-20px; width:225px; }
-.contact-garden .pixel-sheep { position:absolute; width:155px; right:-8px; bottom:8px; max-width:none; }
 .contact-garden-star { position:absolute; right:25px; top:25px; color:var(--rose); font-size:1.3rem; }
 .contact-card-grid { align-content:stretch; }
-.contact-method { min-height:152px; padding:22px; text-decoration:none; box-shadow:inset 0 1px 0 color-mix(in srgb,var(--accent) 4%,transparent); }
-.contact-method:hover { background:color-mix(in srgb,var(--accent) 5%,var(--page)); }
-.contact-method-top { margin-bottom:24px; }
-.contact-method-icon { display:grid; place-items:center; width:38px; height:38px; border:1px solid var(--border); background:var(--surface); color:var(--accent); border-radius:10px; }
-.contact-method-arrow { color:var(--muted); margin-top:2px; }
+.contact-method { min-height:208px; padding:22px; text-decoration:none; border-color:var(--border); background-color:color-mix(in srgb,var(--page) 70%,transparent); box-shadow:inset 0 1px 0 color-mix(in srgb,var(--accent) 4%,transparent); transition:background-color var(--motion-base,240ms) var(--ease-out,ease-out),border-color var(--motion-base,240ms) var(--ease-out,ease-out),box-shadow var(--motion-base,240ms) var(--ease-out,ease-out); }
+.contact-method:is(:hover,:focus-visible) { background:color-mix(in srgb,var(--accent) 5%,var(--page)); border-color:var(--accent); box-shadow:0 0 0 1px color-mix(in srgb,var(--accent) 12%,transparent),0 8px 24px color-mix(in srgb,var(--accent) 8%,transparent); }
+.contact-method:active { background:color-mix(in srgb,var(--accent) 10%,var(--page)); }
+.contact-method-top { margin-bottom:20px; }
+.contact-method-icon { position:relative; isolation:isolate; display:grid; place-items:center; flex-shrink:0; width:76px; height:76px; border:1px solid var(--border); background:var(--surface); color:var(--accent); border-radius:12px; transition:background-color var(--motion-base,240ms) var(--ease-out,ease-out),border-color var(--motion-base,240ms) var(--ease-out,ease-out),box-shadow var(--motion-base,240ms) var(--ease-out,ease-out); }
+.contact-method-icon > svg { display:block; width:40px; height:40px; overflow:visible; }
+.contact-method-arrow { flex-shrink:0; width:28px; height:28px; color:var(--muted); margin-top:2px; transition:color var(--motion-base,240ms) var(--ease-out,ease-out),opacity var(--motion-base,240ms) var(--ease-out,ease-out); opacity:.7; }
+.contact-method:is(:hover,:focus-visible) .contact-method-icon { border-color:color-mix(in srgb,var(--accent) 50%,var(--border)); box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 8%,transparent); }
+.contact-method:is(:hover,:focus-visible) .contact-method-arrow { color:var(--accent); opacity:1; }
+.contact-method:active .contact-method-icon { background:var(--tag); }
 .contact-method-label { margin-bottom:7px; }
 .contact-method-value { overflow-wrap:anywhere; line-height:1.45; letter-spacing:-.02em; }
 .contact-method[data-channel=instagram] .contact-method-icon { color:var(--rose); background:var(--rose-soft); border-color:color-mix(in srgb,var(--rose) 20%,var(--border)); }
 .contact-method[data-channel=phone] .contact-method-icon { color:var(--rose); }
-@media(max-width:1000px) { .contact-board { padding:30px; gap:28px; grid-template-columns:minmax(170px,.8fr) minmax(0,1.6fr); } .contact-method { padding:18px; } .contact-method-value { font-size:.8rem; } }
-@media(max-width:760px) { .contact-board { grid-template-columns:1fr; padding:28px; gap:25px; } .contact-identity { min-height:175px; } .contact-identity h2 { margin-top:18px; font-size:3rem; } .contact-garden { position:absolute; width:160px; height:100px; min-height:0; right:-10px; bottom:-5px; margin:0; } .contact-garden .botanical { width:140px; left:0; } .contact-garden .pixel-sheep { width:90px; right:-4px; bottom:8px; } .contact-garden-star { top:0; right:25px; font-size:1rem; } }
-@media(max-width:639px) { .contact-section { padding-block:35px; } .contact-method { min-height:120px; padding:18px; } .contact-method-top { margin-bottom:14px; } .contact-method-value { font-size:.9rem; } }
-@media(max-width:380px) { .contact-board { padding:24px 20px; } .contact-garden { width:125px; right:-10px; opacity:.8; } .contact-garden .botanical { width:115px; } .contact-garden .pixel-sheep { width:75px; } .contact-identity h2 { font-size:2.5rem; } }
+.contact-identity .contact-avatar-garden { position:relative; inset:auto; width:100%; max-width:290px; min-height:240px; height:250px; flex:1 0 240px; align-self:center; margin-top:24px; }
+.contact-identity .contact-avatar-garden .contact-avatar { position:absolute; z-index:2; top:0; left:50%; width:220px; max-width:100%; height:auto; transform:translateX(-50%); filter:drop-shadow(0 0 12px var(--line-glow)); }
+.contact-identity .contact-avatar-garden .botanical { z-index:1; left:50%; bottom:-8px; width:245px; max-width:100%; transform:translateX(-50%); }
+.contact-identity .contact-avatar-garden .contact-light-orbit { z-index:0; width:235px; height:110px; top:62px; left:50%; transform:translateX(-50%) rotate(-22deg); }
+.contact-avatar-trace { stroke-dasharray:.12 .88; stroke-dashoffset:0; animation:contact-icon-trace 12s linear infinite; animation-play-state:paused; }
+.contact-avatar-head { animation-duration:9s; animation-delay:-3s; }
+.contact-github-trace,.contact-instagram-trace { stroke-dasharray:.18 .82; stroke-dashoffset:0; stroke-linecap:round; animation:contact-icon-trace 9s linear infinite; animation-play-state:paused; }
+.contact-instagram-trace { stroke-dasharray:.24 .76; animation-duration:7s; }
+.contact-instagram-dot { animation:contact-social-led 5s ease-in-out infinite; animation-play-state:paused; }
+.contact-method:is([data-channel=github],[data-channel=instagram]) .contact-method-icon::before { content:""; position:absolute; z-index:-1; inset:-7px; border:1px solid color-mix(in srgb,currentColor 22%,transparent); border-top:2px solid currentColor; border-right-color:transparent; border-radius:50%; opacity:.5; pointer-events:none; animation:contact-social-orbit 12s linear infinite; animation-play-state:paused; transition:opacity 280ms var(--ease-out); }
+.contact-board[data-light-active=true] :is(.contact-avatar-trace,.contact-github-trace,.contact-instagram-trace,.contact-instagram-dot),.contact-board[data-light-active=true] .contact-method:is([data-channel=github],[data-channel=instagram]) .contact-method-icon::before { animation-play-state:running; }
+.contact-method:is([data-channel=github],[data-channel=instagram]):is(:hover,:focus-visible) .contact-method-icon { box-shadow:0 0 0 4px color-mix(in srgb,currentColor 10%,transparent),0 0 25px color-mix(in srgb,currentColor 15%,transparent); }
+.contact-method:is(:hover,:focus-visible) .contact-method-icon::before { opacity:.95; }
+@keyframes contact-icon-trace { to { stroke-dashoffset:-1; } }
+@keyframes contact-social-orbit { to { transform:rotate(360deg); } }
+@keyframes contact-social-led { 0%,100% { opacity:.45; } 50% { opacity:1; } }
+@media(max-width:1000px) { .contact-board { padding:30px; gap:28px; grid-template-columns:minmax(170px,.8fr) minmax(0,1.6fr); } .contact-method { padding:18px; } }
+@media(max-width:760px) { .contact-board { grid-template-columns:1fr; padding:28px; gap:25px; } .contact-identity { min-height:175px; } .contact-identity h2 { margin-top:18px; font-size:3rem; } .contact-garden { position:absolute; width:160px; height:100px; min-height:0; right:-10px; bottom:-5px; margin:0; } .contact-garden .botanical { width:140px; left:0; } .contact-garden-star { top:0; right:25px; font-size:1rem; } .contact-identity .contact-avatar-garden { flex-basis:185px; min-height:185px; height:190px; max-width:245px; margin-top:18px; } .contact-identity .contact-avatar-garden .contact-avatar { width:185px; } .contact-identity .contact-avatar-garden .botanical { width:205px; } .contact-identity .contact-avatar-garden .contact-light-orbit { width:200px; height:95px; top:46px; } }
+@media(max-width:639px) { .contact-section { padding-block:35px; } .contact-method { min-height:200px; padding:18px; } .contact-method-top { margin-bottom:18px; } .contact-method-icon { width:68px; height:68px; } .contact-method-icon > svg { width:36px; height:36px; } .contact-method-arrow { width:26px; height:26px; } }
+@media(max-width:380px) { .contact-board { padding:24px 20px; } .contact-garden { width:125px; right:-10px; opacity:.8; } .contact-garden .botanical { width:115px; } .contact-identity h2 { font-size:2.5rem; } }
+@media(prefers-reduced-motion:reduce) { .contact-method,.contact-method-icon,.contact-method-arrow,.contact-method-icon::before { transition:none; } .contact-avatar-trace,.contact-github-trace,.contact-instagram-trace,.contact-instagram-dot,.contact-method-icon::before { animation:none!important; } }

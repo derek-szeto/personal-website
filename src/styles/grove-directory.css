@@ -1,0 +1,51 @@
+/* One open scene: the objects are the destinations, without card containers. */
+.grove-directory { padding-block:34px 40px; }
+.grove-directory .explore-directory-heading { margin-bottom:0; }
+.grove-directory .explore-directory-heading h1 { margin:0; font:600 18px/1.25 var(--type-heading); letter-spacing:-.015em; }
+.grove-map {
+  --grove-object-blue:#6edfff; --grove-object-pink:#fa8bc7;
+  --grove-object-mint:#a2efda; --grove-object-ink:#345d7a; --grove-object-wool:#e0f4ff;
+  position:relative; height:560px; width:100%; isolation:isolate;
+}
+.grove-map::before { content:''; position:absolute; inset:5% -2% 0; z-index:-1; pointer-events:none; background:radial-gradient(ellipse at 24% 35%,color-mix(in srgb,var(--electric-blue) 6%,transparent),transparent 45%),radial-gradient(ellipse at 78% 63%,color-mix(in srgb,var(--electric-pink) 7%,transparent),transparent 42%); }
+.grove-viewport { position:absolute; inset:0; z-index:1; pointer-events:none; opacity:0; transition:opacity 500ms var(--ease-out); }
+.grove-map[data-scene-ready=true] .grove-viewport { opacity:1; }
+.grove-viewport canvas { display:block; pointer-events:none; }
+.grove-trails { position:absolute; inset:0; width:100%; height:100%; z-index:0; overflow:visible; pointer-events:none; }
+.grove-trail-base { stroke:var(--electric-blue); stroke-width:1; opacity:.16; stroke-dasharray:3 9; }
+.grove-trail-current { stroke:var(--electric-pink); stroke-width:1.5; stroke-dasharray:.035 .965; opacity:.6; animation:grove-current 19s linear infinite; animation-play-state:paused; }
+.grove-landing-ring { stroke:var(--electric-blue); stroke-width:1; opacity:.2; }
+.grove-landing-ring:nth-of-type(even) { stroke:var(--electric-pink); }
+.grove-map[data-running=true] .grove-trail-current { animation-play-state:running; }
+.grove-node {
+  --node-color:var(--electric-blue);
+  position:absolute; top:var(--node-y); left:var(--node-x); z-index:2;
+  display:flex; flex-direction:column; align-items:center; justify-content:flex-end;
+  width:190px; height:205px; padding:0 4px; transform:translate(-50%,-50%);
+  border:0; background:none; color:var(--text); text-decoration:none;
+  -webkit-tap-highlight-color:transparent;
+}
+.grove-node[data-accent=pink] { --node-color:var(--electric-pink); }
+.grove-node.interest-directory-card { background:none; }
+.grove-node::before { content:''; position:absolute; inset:8% -5% 15%; border-radius:50%; z-index:-1; background:radial-gradient(ellipse,color-mix(in srgb,var(--node-color) 13%,transparent),transparent 68%); opacity:0; pointer-events:none; transition:opacity 400ms var(--ease-out); }
+.grove-node:is(:hover,:focus-visible)::before { opacity:1; }
+.grove-node-label { position:relative; display:inline-flex; align-items:center; justify-content:center; gap:14px; min-height:44px; padding:8px 7px; border-bottom:1px solid transparent; border-radius:4px; font:500 18px/1.4 var(--type-ui); letter-spacing:.015em; white-space:nowrap; transition:color 260ms var(--ease-out),border-color 260ms var(--ease-out),background-color 260ms var(--ease-out); }
+.grove-node-label .elastic-arrow { width:18px; height:18px; opacity:.5; }
+.grove-node:is(:hover,:focus-visible) .grove-node-label { color:var(--node-color); border-bottom-color:var(--node-color); }
+.grove-node:focus-visible { outline:none; }
+.grove-node:focus-visible .grove-node-label { outline:2px solid var(--node-color); outline-offset:4px; background:var(--surface); }
+.grove-node:active .grove-node-label { background:var(--tag); }
+.grove-fallback { position:absolute; width:176px; height:176px; left:50%; top:50%; transform:translate(-50%,-50%); pointer-events:none; opacity:1; transition:opacity 420ms var(--ease-out); }
+.grove-map[data-scene-ready=true] .grove-fallback { opacity:0; }
+:root[data-theme=light] .grove-map { --grove-object-blue:#269ac4; --grove-object-pink:#d465a9; --grove-object-mint:#57bba8; --grove-object-ink:#527992; --grove-object-wool:#e2eff4; }
+.grove-map[data-narrow=true] { height:720px; }
+.grove-map[data-narrow=true] .grove-node { width:42%; max-width:160px; height:150px; }
+.grove-map[data-narrow=true] .grove-node-label { font-size:17px; gap:9px; }
+.grove-map[data-narrow=true] .grove-fallback { width:135px; height:135px; top:46%; }
+.grove-map[data-narrow=true] .grove-node::before { inset:5% -4% 12%; }
+@media(min-width:761px) and (max-width:1050px) { .grove-map:not([data-narrow=true]) .grove-node { width:160px; height:190px; } }
+@media(max-width:380px) { .grove-map[data-narrow=true] .grove-node-label { font-size:16px; gap:7px; } }
+@media(prefers-reduced-motion:reduce) {
+  .grove-trail-current { animation:none; stroke-dasharray:.04 .16; opacity:.3; }
+  .grove-viewport,.grove-fallback,.grove-node::before,.grove-node-label { transition:none; }
+}

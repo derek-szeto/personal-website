@@ -1,0 +1,36 @@
+/* Native photo proportions, grouped into compact destination albums. */
+.photo-collections,.vacation-area,.vacation-album,.photo-friends-area { min-width:0; }
+.vacation-area { container:vacation-albums / inline-size; }
+.vacation-area > h3,.photo-friends-area > h3 { margin:0 0 24px; color:var(--text); font:600 24px/1.4 var(--type-heading); letter-spacing:-.02em; }
+.vacation-albums { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); align-items:start; gap:34px 28px; }
+.vacation-album { grid-column:1/-1; }
+.vacation-album.is-solo { grid-column:auto; width:min(100%,640px,calc(var(--album-ratio,1) * 480px + 18px)); max-width:100%; }
+.vacation-album-heading { display:flex; flex-wrap:wrap; align-items:baseline; justify-content:space-between; gap:6px 18px; margin-bottom:14px; padding-bottom:12px; border-bottom:1px solid color-mix(in srgb,var(--electric-blue) 30%,var(--border)); }
+.vacation-album-heading h4 { min-width:0; margin:0; color:var(--text); font:600 20px/1.4 var(--type-heading); letter-spacing:-.015em; overflow-wrap:anywhere; }
+.vacation-album-heading p { margin:0; color:var(--muted); font:500 16px/1.5 var(--type-ui); }
+.vacation-grid { display:flex; align-items:flex-start; gap:16px; min-width:0; }
+.vacation-grid .photo-card { flex:var(--photo-ratio,1) 1 0%; align-self:flex-start; min-width:0; width:auto; max-width:min(100%,640px,calc(var(--photo-ratio,1) * 480px + 16px)); margin:0; padding:8px; }
+.vacation-grid[data-count="1"] .photo-card { flex:0 1 auto; width:100%; max-width:100%; }
+.vacation-grid .photo-card .photo-open { aspect-ratio:auto; }
+.vacation-grid .photo-open img { display:block; width:100%; height:auto; object-fit:contain; }
+.photo-friends-area { margin-top:44px; padding-top:28px; border-top:1px solid color-mix(in srgb,var(--electric-pink) 24%,var(--border)); }
+.photo-friends-area .photo-grid { display:flex; flex-wrap:wrap; align-items:flex-start; gap:20px; }
+.photo-friends-area .photo-card { width:min(100%,360px); }
+.photo-other-grid { margin-top:32px; }
+.photo-collections > .plushies-area { margin-top:44px; }
+.photo-collections > section:first-child { margin-top:0; padding-top:0; border-top:0; }
+@container vacation-albums (max-width:620px) {
+  .vacation-albums { grid-template-columns:1fr; gap:28px; }
+  .vacation-album.is-solo { grid-column:1; }
+  .vacation-grid:not([data-count="1"]) { flex-wrap:wrap; }
+  .vacation-grid:not([data-count="1"]) .photo-card { flex:1 1 calc(50% - 8px); }
+  .vacation-grid:not([data-count="1"]) .photo-card:first-child { flex-basis:100%; }
+}
+@media(max-width:600px) {
+  .vacation-albums { grid-template-columns:1fr; gap:28px; }
+  .vacation-album.is-solo { grid-column:1; }
+  .vacation-grid:not([data-count="1"]) { flex-wrap:wrap; }
+  .vacation-grid:not([data-count="1"]) .photo-card { flex:1 1 calc(50% - 8px); }
+  .vacation-grid:not([data-count="1"]) .photo-card:first-child { flex-basis:100%; }
+  .vacation-album-heading { gap:6px 14px; }
+}

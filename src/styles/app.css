@@ -3,11 +3,34 @@
 @import 'tailwindcss/preflight.css' layer(base);
 @import './index.css' layer(legacy);
 @import './forest.css' layer(legacy);
-@import './sheep.css' layer(legacy);
+@import './directory.css' layer(legacy);
 @import './photos.css' layer(legacy);
-@import './intro.css' layer(legacy);
 @import './tech.css' layer(components);
 @import './contact.css' layer(components);
+@import './interests.css' layer(components);
+@import './valorant.css' layer(components);
+@import './motion.css' layer(components);
+@import './typography.css' layer(components);
+@import './navigation.css' layer(components);
+@import './theme-flash.css' layer(components);
+@import './personal.css' layer(components);
+@import './about.css' layer(components);
+@import './activities.css' layer(components);
+@import './projects.css' layer(components);
+@import './cyber.css' layer(components);
+@import './game-previews.css' layer(components);
+@import './music.css' layer(components);
+@import './intro.css' layer(components);
+@import './dialogs.css' layer(components);
+@import './grove-directory.css' layer(components);
+@import './back-to-top.css' layer(components);
+@import './plushies.css' layer(components);
+@import './vacations.css' layer(components);
+@import './travel-globe.css' layer(components);
+@import './footer.css' layer(components);
+@import './technology-select.css' layer(components);
+@import './zero-point.css' layer(components);
+@import './profile-portrait.css' layer(components);
 @import 'tailwindcss/utilities.css' layer(utilities);
 
 @source '../';
@@ -21,8 +44,10 @@
   --color-line: var(--border);
   --color-magic: var(--accent);
   --color-petal: var(--rose);
-  --font-sans: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-mono: 'Cascadia Code', 'SFMono-Regular', Consolas, monospace;
+  --font-sans: var(--type-body);
+  --font-display: var(--type-display);
+  --font-heading: var(--type-heading);
+  --font-ui: var(--type-ui);
   --shadow-magic: 0 0 0 1px color-mix(in srgb, var(--accent) 12%, transparent), 0 12px 35px #042b2710;
 }
 

@@ -1,0 +1,44 @@
+﻿[
+    {
+        "width":  2048,
+        "source":  "https://media.valorant-api.com/agents/7f94d92c-4234-0a36-9646-3a87eb8b5c89/fullportrait.png",
+        "name":  "Yoru",
+        "filename":  "yoru.png",
+        "height":  1860,
+        "officialPage":  "https://playvalorant.com/en-us/agents/yoru/",
+        "metadata":  "https://valorant-api.com/v1/agents?isPlayableCharacter=true",
+        "bytes":  702935
+    },
+    {
+        "width":  2048,
+        "source":  "https://media.valorant-api.com/agents/bb2a4828-46eb-8cd1-e765-15848195d751/fullportrait.png",
+        "name":  "Neon",
+        "filename":  "neon.png",
+        "height":  1860,
+        "officialPage":  "https://playvalorant.com/en-us/agents/neon/",
+        "metadata":  "https://valorant-api.com/v1/agents?isPlayableCharacter=true",
+        "bytes":  791602
+    },
+    {
+        "source":  "https://media.valorant-api.com/playercards/2a280896-4e81-c319-ffd3-6b8873042647/wideart.png",
+        "height":  128,
+        "filename":  "polyfrog-wide.png",
+        "metadata":  "https://valorant-api.com/v1/playercards",
+        "name":  "POLYfrog Card",
+        "bytes":  29216,
+        "width":  452,
+        "uuid":  "2a280896-4e81-c319-ffd3-6b8873042647",
+        "assetPath":  "ShooterGame/Content/Personalization/PlayerCards/Ep2_Act2_BP/Polyfrog/Playercard_POLYfrog_PrimaryAsset"
+    },
+    {
+        "source":  "https://media.valorant-api.com/playercards/2a280896-4e81-c319-ffd3-6b8873042647/largeart.png",
+        "height":  640,
+        "filename":  "polyfrog-large.png",
+        "metadata":  "https://valorant-api.com/v1/playercards",
+        "name":  "POLYfrog Card",
+        "bytes":  68102,
+        "width":  268,
+        "uuid":  "2a280896-4e81-c319-ffd3-6b8873042647",
+        "assetPath":  "ShooterGame/Content/Personalization/PlayerCards/Ep2_Act2_BP/Polyfrog/Playercard_POLYfrog_PrimaryAsset"
+    }
+]

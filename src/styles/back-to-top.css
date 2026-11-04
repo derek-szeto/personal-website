@@ -1,0 +1,33 @@
+.back-to-top {
+  position:fixed;
+  z-index:14;
+  right:calc(20px + env(safe-area-inset-right,0px));
+  bottom:calc(20px + env(safe-area-inset-bottom,0px));
+  display:grid;
+  place-items:center;
+  width:52px;
+  height:52px;
+  padding:0;
+  border:1px solid var(--border);
+  border-radius:50%;
+  appearance:none;
+  background:color-mix(in srgb,var(--surface) 96%,transparent);
+  backdrop-filter:blur(10px);
+  color:var(--accent);
+  box-shadow:0 5px 20px #09223926;
+  cursor:pointer;
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
+  transition:opacity var(--motion-base,240ms) var(--ease-out,ease-out),visibility 0s var(--motion-base,240ms),color var(--motion-base,240ms) var(--ease-out,ease-out),background-color var(--motion-base,240ms) var(--ease-out,ease-out),border-color var(--motion-base,240ms) var(--ease-out,ease-out),box-shadow var(--motion-base,240ms) var(--ease-out,ease-out);
+}
+.back-to-top.is-visible { opacity:1; visibility:visible; pointer-events:auto; transition-delay:0s; }
+.back-to-top::before { content:''; position:absolute; inset:-5px; pointer-events:none; border:1px solid var(--accent); border-radius:inherit; box-shadow:0 0 12px color-mix(in srgb,var(--accent) 16%,transparent); animation:back-to-top-ring 4s var(--ease-in-out,ease-in-out) infinite; animation-play-state:paused; }
+.back-to-top.is-visible::before { animation-play-state:running; }
+.back-to-top:is(:hover,:focus-visible) { color:var(--rose); background:var(--tag); border-color:var(--accent); box-shadow:0 0 20px color-mix(in srgb,var(--accent) 20%,transparent); }
+.back-to-top:focus-visible { outline:2px solid var(--accent); outline-offset:8px; }
+.back-to-top:active { background:var(--rose-soft); }
+.back-to-top-icon { transition:color var(--motion-base,240ms) var(--ease-out,ease-out),filter var(--motion-base,240ms) var(--ease-out,ease-out); }
+.back-to-top:is(:hover,:focus-visible) .back-to-top-icon { filter:drop-shadow(0 0 4px color-mix(in srgb,var(--rose) 35%,transparent)); }
+@keyframes back-to-top-ring { 0%,100% { opacity:.35; border-color:var(--accent); } 50% { opacity:.8; border-color:var(--rose); } }
+@media(prefers-reduced-motion:reduce) { .back-to-top,.back-to-top-icon { transition:none; } .back-to-top::before { animation:none; opacity:.6; } }

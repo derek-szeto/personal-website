@@ -1,0 +1,76 @@
+{
+    "sourceStylesheet":  "https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..700\u0026family=DM+Serif+Display\u0026family=Jost:wght@400..600\u0026family=Work+Sans:wght@400..600\u0026display=swap",
+    "requestedUserAgent":  "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36",
+    "downloadedAtUtc":  "2026-10-30T19:27:51.3685799Z",
+    "unicodeRange":  "U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD",
+    "fonts":  [
+                  {
+                      "family":  "DM Serif Display",
+                      "file":  "dm-serif-display-latin-400.woff2",
+                      "format":  "woff2",
+                      "style":  "normal",
+                      "cssWeight":  "400",
+                      "subset":  "latin",
+                      "source":  "https://fonts.gstatic.com/s/dmserifdisplay/v17/-nFnOHM81r4j6k0gjAW3mujVU2B2G_Bx0g.woff2",
+                      "bytes":  24744,
+                      "magic":  "wOF2",
+                      "sha256":  "fdf61e20fd2c0108e0ea28da4daca0035205b4b7fc031a3974b865b704de160a",
+                      "license":  {
+                                      "name":  "SIL Open Font License 1.1",
+                                      "file":  "licenses/dm-serif-display-OFL.txt",
+                                      "source":  "https://raw.githubusercontent.com/google/fonts/main/ofl/dmserifdisplay/OFL.txt"
+                                  }
+                  },
+                  {
+                      "family":  "Bricolage Grotesque",
+                      "file":  "bricolage-grotesque-latin-400-700.woff2",
+                      "format":  "woff2",
+                      "style":  "normal",
+                      "cssWeight":  "400 700",
+                      "subset":  "latin",
+                      "source":  "https://fonts.gstatic.com/s/bricolagegrotesque/v9/3y9K6as8bTXq_nANBjzKo3IeZx8z6up5BeSl9D4dj_x9PpZBMlGIInE.woff2",
+                      "bytes":  76888,
+                      "magic":  "wOF2",
+                      "sha256":  "a79fdb52d4a5c76552452f69202add96e287401fff03d3e8c0e38b4dcb5a99cd",
+                      "license":  {
+                                      "name":  "SIL Open Font License 1.1",
+                                      "file":  "licenses/bricolage-grotesque-OFL.txt",
+                                      "source":  "https://raw.githubusercontent.com/google/fonts/main/ofl/bricolagegrotesque/OFL.txt"
+                                  }
+                  },
+                  {
+                      "family":  "Work Sans",
+                      "file":  "work-sans-latin-400-600.woff2",
+                      "format":  "woff2",
+                      "style":  "normal",
+                      "cssWeight":  "400 600",
+                      "subset":  "latin",
+                      "source":  "https://fonts.gstatic.com/s/worksans/v24/QGYsz_wNahGAdqQ43Rh_fKDp.woff2",
+                      "bytes":  50316,
+                      "magic":  "wOF2",
+                      "sha256":  "1dd49afc07fb2231b2ff686cbf007725fb2742271bb1f28ebd98f22a0d817343",
+                      "license":  {
+                                      "name":  "SIL Open Font License 1.1",
+                                      "file":  "licenses/work-sans-OFL.txt",
+                                      "source":  "https://raw.githubusercontent.com/google/fonts/main/ofl/worksans/OFL.txt"
+                                  }
+                  },
+                  {
+                      "family":  "Jost",
+                      "file":  "jost-latin-400-600.woff2",
+                      "format":  "woff2",
+                      "style":  "normal",
+                      "cssWeight":  "400 600",
+                      "subset":  "latin",
+                      "source":  "https://fonts.gstatic.com/s/jost/v20/92zatBhPNqw73oTd4g.woff2",
+                      "bytes":  26576,
+                      "magic":  "wOF2",
+                      "sha256":  "7726a5cd6f3c0e876c028ea2a643d45f7aad4b0f164b70966c669f4a4668f4b9",
+                      "license":  {
+                                      "name":  "SIL Open Font License 1.1",
+                                      "file":  "licenses/jost-OFL.txt",
+                                      "source":  "https://raw.githubusercontent.com/google/fonts/main/ofl/jost/OFL.txt"
+                                  }
+                  }
+              ]
+}

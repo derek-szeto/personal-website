@@ -1,0 +1,63 @@
+.project-card .project-art.project-art-demo { display:block; height:var(--project-media-height,220px); padding:0; overflow:hidden; background:#081b2b; }
+.game-preview { --preview-cycle:14s; display:flex; flex-direction:column; width:100%; height:100%; min-width:0; overflow:hidden; background:radial-gradient(ellipse at 20% 0,#173c5233,transparent 70%),#081b2b; color:#c4deeb; }
+.game-preview-stage { display:grid; place-items:center; flex:1; min-height:0; padding:6px 10px 0; }
+.game-preview-scene { display:block; width:100%; height:100%; max-height:100%; }
+.project-demo-gallery { overflow:hidden; margin-top:24px; border:1px solid #375469; border-radius:12px; }
+.project-demo-gallery .game-preview-stage { flex:none; aspect-ratio:600/320; padding:8px; }
+.game-preview svg * { animation-play-state:paused; }
+.game-preview[data-running=true] svg * { animation-play-state:running; }
+/* Continuous slides stay paused until the shared preview gate enables them. */
+.grid-sliding-block {
+  animation:grid-block-slide var(--block-duration,12s) linear infinite both;
+  animation-delay:var(--block-delay,0s);
+  animation-direction:var(--block-direction,normal);
+  animation-play-state:paused;
+}
+.grid-sliding-face { fill:currentColor; fill-opacity:.9; stroke:#d6f2ff; stroke-opacity:.2; stroke-width:1; }
+.grid-sliding-shadow { fill:#03111f; opacity:.25; }
+@keyframes grid-block-slide {
+  from { transform:translateX(var(--block-from,-640px)); }
+  to { transform:translateX(var(--block-to,640px)); }
+}
+.mine-board-frame { fill:#0c2332; stroke:#3d6075; stroke-width:2; }
+.mine-open-tile { fill:#102b3c; stroke:#294759; stroke-width:1; }
+.mine-closed-tile { fill:#2b465a; stroke:#527187; stroke-width:1; }
+.mine-bevel { fill:none; stroke:#7694a8; stroke-width:2; opacity:.7; }
+.mine-cover { opacity:0; animation:mine-reveal-first var(--preview-cycle) linear infinite both; }
+.mine-reveal-1 { animation-name:mine-reveal-second; }
+.mine-reveal-2 { animation-name:mine-reveal-third; }
+.mine-cover-bomb { animation-name:mine-reveal-bombs; }
+.mine-cover-flag { opacity:1; animation:none; }
+.mine-number { fill:#b5d2e6; font:600 23px/1 var(--type-ui); text-anchor:middle; dominant-baseline:middle; }
+.mine-number-1 { fill:#84baff; }
+.mine-number-2 { fill:#8be4bf; }
+.mine-number-3 { fill:#ff9ba8; }
+.mine-bomb { stroke:#7290a4; stroke-width:2; }
+.mine-bomb > circle { fill:#030e18; }
+.mine-bomb > .mine-bomb-glint { fill:#c5d9e6; stroke:none; }
+.mine-flag-pole { fill:none; stroke:#deedf6; stroke-width:2; }
+.mine-flag { fill:#ff8ab8; }
+.mine-cursor { fill:#d6edf9; stroke:#142e42; stroke-width:2; stroke-linejoin:round; opacity:0; animation:mine-cursor var(--preview-cycle) ease-in-out infinite both; }
+.mine-hit-tile { animation:mine-tile-hit var(--preview-cycle) ease-out infinite both; }
+.mine-explosion { color:#ffc08b; }
+.mine-blast-ring { fill:none; stroke:#ffb591; stroke-width:2; opacity:0; animation:mine-blast-ring var(--preview-cycle) ease-out infinite both; animation-delay:var(--blast-delay); }
+.mine-blast-core { fill:#ffc891; stroke:#ff8f9e; stroke-width:1; opacity:0; animation:mine-blast-core var(--preview-cycle) ease-out infinite both; animation-delay:var(--blast-delay); }
+.mine-blast-spark { opacity:0; fill:#ffbe88; animation:mine-blast-spark var(--preview-cycle) ease-out infinite both; animation-delay:var(--blast-delay); }
+.mine-blast-spark:nth-child(even) { fill:#ff8fba; }
+.mine-side-trace { fill:none; stroke:#789ab4; stroke-width:2; opacity:.45; }
+@keyframes mine-reveal-first { 0%,8% { opacity:1; } 13%,91% { opacity:0; } 98%,100% { opacity:1; } }
+@keyframes mine-reveal-second { 0%,25% { opacity:1; } 32%,91% { opacity:0; } 98%,100% { opacity:1; } }
+@keyframes mine-reveal-third { 0%,45% { opacity:1; } 52%,91% { opacity:0; } 98%,100% { opacity:1; } }
+@keyframes mine-reveal-bombs { 0%,62% { opacity:1; } 65%,91% { opacity:0; } 98%,100% { opacity:1; } }
+@keyframes mine-cursor { 0% { opacity:0; transform:translate(120px,65px); } 7%,14% { opacity:1; transform:translate(180px,100px); } 27%,34% { opacity:1; transform:translate(280px,145px); } 46%,53% { opacity:1; transform:translate(440px,220px); } 61%,65% { opacity:1; transform:translate(320px,182px); } 70%,100% { opacity:0; transform:translate(320px,182px); } }
+@keyframes mine-tile-hit { 0%,62%,83%,100% { fill:#102b3c; } 65% { fill:#a04656; } 75% { fill:#422b3d; } }
+@keyframes mine-blast-ring { 0%,63% { opacity:0; transform:scale(.25); } 66% { opacity:.8; transform:scale(.7); } 75% { opacity:0; transform:scale(2.4); } 100% { opacity:0; transform:scale(2.4); } }
+@keyframes mine-blast-core { 0%,63% { opacity:0; transform:scale(.15) rotate(0); } 66% { opacity:.95; transform:scale(1.15) rotate(15deg); } 74%,100% { opacity:0; transform:scale(1.5) rotate(45deg); } }
+@keyframes mine-blast-spark { 0%,63% { opacity:0; transform:translate(0,0) scale(.3); } 66% { opacity:1; } 76%,100% { opacity:0; transform:translate(var(--spark-x),var(--spark-y)) rotate(100deg) scale(.2); } }
+html[data-ambient-paused=true] .game-preview svg * { animation-play-state:paused!important; }
+@media(max-width:440px) { .game-preview-stage { padding-inline:3px; } }
+@media(prefers-reduced-motion:reduce) {
+  .game-preview svg * { animation:none!important; }
+  .mine-cursor,.mine-blast-ring,.mine-blast-core,.mine-blast-spark { opacity:0; }
+  .mine-cover:not(.mine-cover-flag) { opacity:0; }
+}

@@ -1,0 +1,17 @@
+.hero-visual { width:min(100%,460px); justify-self:end; isolation:isolate; }
+.hero-portrait { position:relative; margin:0; padding:10px; border:1px solid var(--border); border-radius:22px; background:var(--surface); box-shadow:0 20px 55px #042b2926,0 0 40px color-mix(in srgb,var(--accent) 8%,transparent); }
+.hero-portrait::before,.hero-portrait::after { content:''; position:absolute; z-index:1; width:20px; height:20px; pointer-events:none; }
+.hero-portrait::before { top:20px; left:20px; border-left:2px solid var(--accent); border-top:2px solid var(--accent); }
+.hero-portrait::after { bottom:20px; right:20px; border-right:2px solid var(--rose); border-bottom:2px solid var(--rose); }
+.hero-portrait img { display:block; width:100%; height:auto; aspect-ratio:919/1015; object-fit:contain; border-radius:12px; }
+.hero-visual .hero-plants { width:190px; left:-45px; bottom:-20px; }
+.about-story { display:grid; gap:24px; min-width:0; }
+.about-friends-photo { margin:0; border:1px solid var(--border); border-radius:16px; overflow:hidden; background:var(--surface); }
+.about-photo-open { position:relative; display:block; width:100%; padding:0; border:0; background:var(--page); cursor:zoom-in; line-height:0; }
+.about-photo-open > img { display:block; width:100%; height:auto; aspect-ratio:4/3; object-fit:contain; }
+.about-photo-open .photo-expand { top:12px; right:12px; bottom:auto; width:44px; height:44px; border:1px solid var(--border); border-radius:10px; font-size:24px; line-height:1; transition:background-color var(--motion-base) var(--ease-out),color var(--motion-base) var(--ease-out),border-color var(--motion-base) var(--ease-out); }
+.about-photo-open:is(:hover,:focus-visible) .photo-expand { color:var(--page); background:var(--accent); border-color:var(--accent); }
+.about-photo-open:focus-visible { outline:3px solid var(--accent); outline-offset:-5px; }
+.photo-lightbox > img[width] { height:auto; }
+@media(max-width:760px) { .hero-visual { width:min(100%,420px); justify-self:center; } .hero-visual .hero-plants { left:-6px; bottom:-14px; width:150px; } }
+@media(prefers-reduced-motion:reduce) { .about-photo-open .photo-expand { transition:none; } }

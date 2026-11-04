@@ -1,0 +1,6 @@
+.profile-portrait { width:100%; max-width:320px; min-width:0; margin:0; padding:8px; border:1px solid var(--border); border-radius:14px; background:linear-gradient(145deg,var(--electric-blue),var(--border) 25%,var(--surface) 50%,var(--electric-pink)); box-shadow:0 12px 35px #001b301c,0 0 24px var(--line-glow); }
+.profile-portrait img { display:block; width:100%; height:auto; aspect-ratio:919/1015; object-fit:contain; border:4px solid var(--surface); border-radius:7px; }
+.about-story.about-story-with-portrait { grid-template-columns:minmax(220px,.7fr) minmax(0,1.3fr); align-items:center; gap:36px; }
+.interest-about-person { padding:22px; }
+.interest-about-person .profile-portrait { max-width:300px; }
+@media(max-width:760px) { .about-story.about-story-with-portrait { grid-template-columns:minmax(0,1fr); gap:28px; } .about-story-with-portrait > .profile-portrait { max-width:280px; justify-self:center; } }

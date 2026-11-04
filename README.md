@@ -3,7 +3,7 @@
 A small, component-based personal website written in JavaScript and JSX. The
 text is intentionally placeholder content so we can decide what belongs on your
 website next. It includes responsive navigation, an introduction, About,
-Projects, Skills & Interests, and Contact.
+Photos, Projects, Skills, Contact, and a separate Interests page.
 
 ## 1. Run the project
 
@@ -35,11 +35,14 @@ when you save. Use Ctrl+C in the terminal to stop the server. Do not open
 | `src/App.jsx` | Assembles the page using components and passes data through props. |
 | `src/components/` | Reusable UI pieces and individual page sections. |
 | `src/components/Section.jsx` | Shared section heading and spacing used by several sections. |
+| `src/components/TravelGlobe.jsx` | Accessible vacation destination controls and lazy loading for the globe. |
+| `src/components/TravelGlobeCanvas.jsx` | Three.js Earth, geographic pins, drag controls, and camera transitions. |
 | `src/components/ProjectCard.jsx` | One project card, reused for every entry in the projects array. |
 | `src/data/siteData.js` | Your name, text, navigation, projects, skills, and contact links. |
-| `src/styles/index.css` | Shared styles, component styles, and responsive rules. |
+| `src/styles/app.css` | Tailwind entry point, theme tokens, and layered component styles. |
+| `server/` | Local HTTP server and the optional Spotify integration. |
 | `public/` | Files served directly, such as the favicon or a future resume PDF. |
-| `vite.config.js` | Vite configuration; enables the React plugin. |
+| `vite.config.js` | Vite configuration for React, Tailwind, and the local API proxy. |
 | `package.json` | Lists dependencies and commands such as `npm run dev`. |
 | `package-lock.json` | Records exact installed dependency versions. Commit this to Git. |
 
@@ -81,8 +84,8 @@ entry. Adding data adds another card without duplicating component markup.
 
 ## 4. Learn a few React concepts here
 
-- **Components:** `App` combines smaller functions such as `Hero` and `Footer`.
-- **Props:** `<Hero profile={profile} />` passes data into the Hero component.
+- **Components:** `App` combines smaller functions such as `Directory`, `About`, and `Footer`.
+- **Props:** `<About name={profile.name} />` passes your name into the About component.
 - **Lists:** `.map()` turns project objects into cards. Each card gets a stable
   `key` from its project ID.
 - **Conditional rendering:** Contact links appear only when values are supplied.
@@ -90,9 +93,10 @@ entry. Adding data adds another card without duplicating component markup.
 - **Events:** Clicking its menu button changes state with `onClick`.
 - **Children:** `Section` wraps different content through its `children` prop.
 
-This starter uses one page with anchor links, so React Router is not needed.
-It does not include a backend, database, analytics, or a contact form. The email
-button opens the visitor's mail app once you provide an address.
+The site uses hash routes for Home, Projects, and Interests, so React Router is
+not needed. Its Node backend supports Spotify; Valorant content is entered
+manually. There is no database, analytics, or contact form. The email button
+opens the visitor's mail app.
 
 ## 5. Build for production
 
@@ -114,15 +118,24 @@ suggestions: remove or rename them as your purpose becomes clearer.
 
 ## Interactive design tools
 
+Vacation photos are selected using a 3D Earth or its matching destination buttons.
+Add a location to `vacationDestinations` in `siteData.js`, then use the same `trip`
+value on its photos. Latitude/longitude position the pin; `trip` and `period`
+group the album. Friends and plushies remain outside the travel selector.
+
+Coastline data: [Natural Earth](https://www.naturalearthdata.com/about/terms-of-use/),
+public domain. The compact local data in `src/data/globeLand.js` works without a
+map API key or external requests.
+
 - Motion powers the sliding navigation marker, project-card interactions, and scenery entrance. Reduced-motion preferences are respected.
 - Radix Dialog powers each project detail sheet, including keyboard focus handling and Escape to close.
-- React Three Fiber, Three.js, and Drei power the optional 3D village. Choose **Explore in 3D** on the home page; drag to rotate. The scene is lazy-loaded and renders on demand. Storybook view remains available without WebGL.
+- React Three Fiber, Three.js, and Drei power the optional 3D forest. Choose **3D** on the home page; drag to rotate. The scene is lazy-loaded and renders on demand. The **2D** view remains available without WebGL.
 - The Rive React Canvas runtime is installed for future custom animation assets. No Rive animation is active yet: it requires a `.riv` file created or exported from Rive.
 
 Run `npm run dev` to preview. Visit `#/projects` for the searchable project journal. Edit `src/data/siteData.js` to replace the sample project entries.
 ## Forest design references
 
-The current design uses an original wool forest with blocky sheep, teal and mint scenery, moonlight and rose accents. Light and dark themes have separate palettes. No outside drawing or 3D model is required for the current code-created artwork.
+The current design uses an original magical forest with teal and mint scenery, moonlight and rose accents. Light and dark themes have separate palettes. No outside drawing or 3D model is required for the current code-created artwork.
 
 Design study (October 2026):
 - Brittany Chiang: https://brittanychiang.com/ - clear hierarchy and separated project archive.
@@ -144,4 +157,19 @@ Empty image paths show illustrated placeholders. Real photos open in a larger vi
 
 Tailwind CSS v4 runs through the Vite plugin. `src/styles/app.css` defines the color and font tokens and loads the existing illustration/animation rules in a lower CSS layer. Tailwind utilities and `src/styles/tech.css` control the new panels, typography, grid details, and controls. The custom `.site-container` class avoids a collision with Tailwind's `container` utility.
 
-`Botanical.jsx` supplies the ferns and shrubs used around the page and inside `ForestArt.jsx`. Decorative movement pauses outside the viewport and respects reduced motion. The 3D forest has matching shrub models. Existing sheep and intro animations remain available.
+`Botanical.jsx` supplies the ferns and shrubs used around the page and inside `ForestArt.jsx`. Decorative movement pauses outside the viewport and respects reduced motion. The 3D forest has matching shrub models. The intro and plant animations remain available.
+
+## Interests and personal content
+
+The home page keeps About Me and an animated directory link to `#/interests`.
+The Interests page contains About Me, Valorant, Music, Likes, and Dislikes.
+
+Spotify is the only connected API. Follow [API-SETUP.md](API-SETUP.md) to add
+your client ID and connect your account locally. No client secret is required.
+The site shows your currently playing track, top artists, and up to six favorite
+tracks that you select yourself.
+
+Valorant needs no API key. Edit `valorant` in `src/data/siteData.js` to set
+`player.cardImage`, `player.title`, current and peak ranks, most-played `agents`,
+`experience`, and `earnings`. These fields and images are entered manually; the
+site does not retrieve player statistics. The setup guide documents each field.

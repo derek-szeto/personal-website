@@ -1,0 +1,174 @@
+/* Comfortable targets and type stay consistent in the bar and its overlay. */
+html { scroll-padding-top:calc(var(--site-header-height,104px) + 16px); }
+.adventure-header { z-index:12; }
+.adventure-header .navbar {
+  position:relative;
+  min-height:84px;
+  flex-wrap:nowrap;
+  gap:16px;
+  padding:12px 18px;
+}
+.adventure-header .brand {
+  flex-shrink:0;
+  min-height:48px;
+  gap:10px;
+  font-size:18px;
+}
+.adventure-header .brand-copy { font-size:inherit; }
+.adventure-header .brand-mark { flex-shrink:0; width:40px; height:40px; font-size:16px; }
+.adventure-header .nav-menu,.adventure-header .nav-menu-inner { display:contents; }
+.adventure-header .nav-links {
+  display:flex;
+  flex-direction:row;
+  flex-wrap:nowrap;
+  align-items:center;
+  gap:4px;
+  width:auto;
+  margin-left:auto;
+  padding:0;
+  border:0;
+}
+.adventure-header .nav-links a {
+  min-height:48px;
+  gap:8px;
+  padding:11px 12px;
+  font-size:16px;
+  line-height:1.4;
+  letter-spacing:.015em;
+  white-space:nowrap;
+  transition:background-color var(--motion-base) var(--ease-out),border-color var(--motion-base) var(--ease-out),color var(--motion-base) var(--ease-out),box-shadow var(--motion-base) var(--ease-out);
+}
+.adventure-header .nav-icon {
+  display:grid;
+  place-items:center;
+  flex:0 0 20px;
+  width:20px;
+  height:20px;
+  font-size:20px;
+  line-height:1;
+  transition:color var(--motion-base) var(--ease-out);
+}
+.adventure-header .nav-links a:is(:hover,:focus-visible,:active),
+.adventure-header .nav-links a:is(:hover,:focus-visible,:active) .nav-icon {
+  transform:none;
+  translate:none;
+  scale:none;
+}
+.adventure-header .menu-toggle { display:none; }
+.adventure-header .theme-switch,.adventure-header .menu-toggle {
+  flex-shrink:0;
+  align-items:center;
+  justify-content:center;
+  min-height:48px;
+  gap:8px;
+  padding:11px 12px;
+  border:1px solid var(--border);
+  border-radius:24px;
+  background:var(--surface);
+  color:var(--text);
+  font-size:16px;
+  line-height:1.4;
+  letter-spacing:.015em;
+  transition:background-color var(--motion-base) var(--ease-out),border-color var(--motion-base) var(--ease-out),box-shadow var(--motion-base) var(--ease-out);
+}
+.adventure-header .theme-switch { min-width:96px; }
+.adventure-header .theme-switch-label { display:inline; }
+.adventure-header .theme-icon { width:20px; height:20px; font-size:24px; }
+.adventure-header .theme-icon > span { grid-area:1 / 1; }
+.adventure-header .theme-switch:is(:hover,:focus-visible,:active),
+.adventure-header .menu-toggle:is(:hover,:focus-visible,:active) {
+  transform:none;
+  translate:none;
+  scale:none;
+  background:var(--tag);
+  border-color:var(--accent);
+  box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 10%,transparent);
+}
+.adventure-header :is(.brand,.nav-links a,.theme-switch,.menu-toggle):focus-visible {
+  outline:2px solid var(--accent);
+  outline-offset:3px;
+}
+.adventure-header .menu-toggle-icon { flex-shrink:0; width:16px; height:16px; }
+.adventure-header .menu-toggle-icon::before,.adventure-header .menu-toggle-icon::after { width:16px; height:2px; }
+.adventure-header .menu-toggle-icon::before { top:4px; }
+.adventure-header .menu-toggle-icon::after { top:10px; }
+.adventure-header [aria-expanded=true] .menu-toggle-icon::before,
+.adventure-header [aria-expanded=true] .menu-toggle-icon::after { top:7px; }
+
+/* The menu floats below the header; opening it never moves the page. */
+@media(max-width:1280px) {
+  .adventure-header .navbar { min-height:80px; padding:12px 16px; gap:12px; }
+  .adventure-header .brand { margin-right:auto; }
+  .adventure-header .menu-toggle { display:flex; min-width:90px; }
+  .adventure-header .theme-switch { width:48px; min-width:48px; padding:11px; }
+  .adventure-header .theme-switch-label { display:none; }
+  .adventure-header .nav-menu {
+    display:grid;
+    position:absolute;
+    top:calc(100% + 8px);
+    left:0;
+    right:0;
+    grid-template-rows:0fr;
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+    transition:grid-template-rows var(--motion-base) var(--ease-out),opacity var(--motion-base) var(--ease-out),visibility 0s var(--motion-base);
+  }
+  .adventure-header .nav-menu.is-open {
+    grid-template-rows:1fr;
+    opacity:1;
+    visibility:visible;
+    pointer-events:auto;
+    transition:grid-template-rows var(--motion-base) var(--ease-out),opacity var(--motion-base) var(--ease-out),visibility 0s;
+  }
+  .adventure-header .nav-menu-inner { display:block; min-height:0; overflow:hidden; border-radius:18px; }
+  .adventure-header .nav-menu .nav-links {
+    display:grid;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:8px;
+    width:100%;
+    margin:0;
+    padding:14px;
+    border:1px solid var(--border);
+    border-radius:18px;
+    background:var(--surface);
+    box-shadow:0 16px 40px #042b2926;
+  }
+  .adventure-header .nav-menu .nav-links li {
+    min-width:0;
+    opacity:0;
+    translate:none;
+    transition:opacity var(--motion-base) var(--ease-out);
+    transition-delay:0s;
+  }
+  .adventure-header .nav-menu.is-open .nav-links li { opacity:1; transition-delay:0s; }
+  .adventure-header .nav-menu .nav-links a {
+    min-height:48px;
+    justify-content:flex-start;
+    gap:10px;
+    padding:12px;
+    border-radius:12px;
+    border-color:var(--border);
+    background:var(--surface);
+  }
+  .adventure-header .nav-menu .nav-links a:is(:hover,:focus-visible) { background:var(--tag); }
+  .adventure-header .nav-menu .nav-links a.is-active,
+  .adventure-header .nav-menu .nav-links a.is-active:is(:hover,:focus-visible) { background:transparent; border-color:transparent; color:var(--page); }
+  .adventure-header .nav-menu .nav-active-backdrop { border-radius:12px; }
+}
+@media(max-width:560px) {
+  .adventure-header .navbar { gap:8px; padding:10px 12px; }
+  .adventure-header .brand { gap:8px; font-size:16px; }
+  .adventure-header .brand-mark { width:36px; height:36px; }
+  .adventure-header .menu-toggle { min-width:88px; }
+  .adventure-header .nav-menu .nav-links { grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; padding:12px; }
+  .adventure-header .nav-menu .nav-links a { gap:8px; padding:12px 10px; }
+}
+@media(max-width:380px) {
+  .adventure-header .brand-mark { display:none; }
+  .adventure-header .navbar { padding-inline:10px; }
+}
+@media(prefers-reduced-motion:reduce) {
+  .adventure-header .nav-menu,.adventure-header .nav-menu.is-open,
+  .adventure-header .nav-menu .nav-links li { transition:none; }
+}
