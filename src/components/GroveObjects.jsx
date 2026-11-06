@@ -1,6 +1,6 @@
 import { useEffect, useLayoutEffect, useMemo, useRef } from 'react';
 import { useFrame, useThree } from '@react-three/fiber';
-import { CubicBezierCurve3, CurvePath, DoubleSide, LineCurve3, MathUtils, MeshStandardMaterial, Vector3 } from 'three';
+import { CubicBezierCurve3, DoubleSide, MathUtils, MeshStandardMaterial, Vector3 } from 'three';
 
 const HALF_PI = Math.PI / 2;
 
@@ -19,6 +19,8 @@ function makePalette(night) {
     wool: material(night ? '#cae9f3' : '#e5f7ff', '#3d879b', .1, { roughness: .9, metalness: 0 }),
     wood: material(night ? '#578894' : '#416a79', '#193e4c', .04, { roughness: .8, metalness: .05 }),
     glass: material('#68d9ff', '#197496', .25, { transparent: true, opacity: .13, side: DoubleSide, depthWrite: false, roughness: .1 }),
+    leaf: material(night ? '#368b89' : '#277f79', '#1e625d', .12, { roughness: .75, metalness: .04 }),
+    moss: material(night ? '#326771' : '#4c8d89', '#1d5b64', .08, { roughness: .9, metalness: 0 }),
   };
 }
 
@@ -26,17 +28,42 @@ function Gem({ material, position = [0, 0, 0], scale = [1, 1, 1], rotation = [0,
   return <mesh material={material} position={position} scale={scale} rotation={rotation}><octahedronGeometry args={[size, 0]} /></mesh>;
 }
 
-function WoolTree({ palette: p }) {
-  return <>
-    <mesh material={p.stone} position={[0, -.61, 0]} scale={[1.12, .48, .9]} rotation={[.12, .24, .1]}><dodecahedronGeometry args={[.59, 0]} /></mesh>
-    <Gem material={p.cyan} position={[-.3, -.68, .29]} size={.13} scale={[.65, 1.8, .65]} />
-    <mesh material={p.wood} position={[0, -.15, 0]}><cylinderGeometry args={[.08, .12, .8, 5]} /></mesh>
-    <mesh material={p.wood} position={[-.15, .05, 0]} rotation={[0, 0, -.62]}><cylinderGeometry args={[.045, .065, .48, 5]} /></mesh>
-    <mesh material={p.wood} position={[.17, .1, 0]} rotation={[0, 0, .62]}><cylinderGeometry args={[.045, .065, .47, 5]} /></mesh>
-    {[[0,.57,0,.43],[-.34,.4,.03,.34],[.34,.43,-.03,.35],[.03,.38,.29,.32]].map(([x,y,z,r], index) => <mesh key={index} material={p.wool} position={[x,y,z]} rotation={[.1,index*.7,.2]}><icosahedronGeometry args={[r,1]} /></mesh>)}
-    <Gem material={p.pink} position={[-.43,.58,.2]} size={.09} />
-    <Gem material={p.mint} position={[.37,.64,.16]} size={.07} />
-  </>;
+function Vine({ points, material, radius = .025 }) {
+  const curve = useMemo(() => new CubicBezierCurve3(...points.map(point => new Vector3(...point))), [points]);
+  return <mesh material={material}><tubeGeometry args={[curve, 16, radius, 5, false]} /></mesh>;
+}
+
+function Leaf({ material, position, rotation = [0,0,0], scale = [1,1,1] }) {
+  return <mesh material={material} position={position} rotation={rotation} scale={scale}><icosahedronGeometry args={[.2,0]} /></mesh>;
+}
+
+function EnchantedWillow({ palette: p, rotor }) {
+  return <group position={[0,.36,0]}>
+    <mesh material={p.stone} position={[0,-.61,0]} scale={[1,.36,.76]} rotation={[0,.24,0]}><dodecahedronGeometry args={[.62,0]} /></mesh>
+    <mesh material={p.moss} position={[0,-.52,0]}><cylinderGeometry args={[.54,.47,.12,9]} /></mesh>
+    <Gem material={p.cyan} position={[-.29,-.76,.15]} scale={[.6,1.7,.6]} size={.12} />
+    <Gem material={p.pink} position={[.21,-.72,.29]} scale={[.6,1.4,.6]} size={.08} />
+    <Vine material={p.wood} radius={.075} points={[[0,-.52,0],[-.14,-.12,0],[.17,.14,-.03],[.05,.6,0]]} />
+    {[-1,1].map(side => <group key={side}>
+      <Vine material={p.wood} radius={.038} points={[[.02,-.02,0],[side*.12,.21,0],[side*.39,.18,-.03],[side*.43,.43,0]]} />
+      <Vine material={p.wood} radius={.035} points={[[0,-.35,.01],[side*.09,-.51,.05],[side*.27,-.44,.21],[side*.39,-.51,.23]]} />
+    </group>)}
+    <group ref={rotor} position={[0,.41,0]}>
+      {[[0,.22,-.07,.43],[-.34,.05,-.02,.33],[.32,.09,-.04,.34],[0,-.02,.21,.3]].map(([x,y,z,r],index) => <mesh key={index} material={index % 2 ? p.leaf : p.mint} position={[x,y,z]} scale={[1,.48,.8]} rotation={[.08,index*.6,.12]}><icosahedronGeometry args={[r,1]} /></mesh>)}
+      {Array.from({length:7},(_,index) => {
+        const angle = index*Math.PI*2/7;
+        const x = Math.cos(angle)*.43, z = Math.sin(angle)*.25;
+        const length = .26 + (index%3)*.075;
+        return <group key={index} position={[x,-.02,z]}>
+          <Vine material={p.leaf} radius={.012} points={[[0,0,0],[x*.25,-.08,.02],[x*.12,-length*.7,.03],[0,-length,0]]} />
+          <Leaf material={index%2 ? p.cyan : p.mint} position={[.02,-length*.54,.02]} rotation={[0,.3,.3]} scale={[.34,.65,.2]} />
+          <Gem material={index%2 ? p.pink : p.cyan} position={[0,-length,0]} size={.037} scale={[.65,1.35,.65]} />
+        </group>;
+      })}
+    </group>
+    <Leaf material={p.mint} position={[-.34,-.46,.28]} rotation={[0,0,-.65]} scale={[.8,.3,.5]} />
+    <Leaf material={p.leaf} position={[.32,-.46,.18]} rotation={[0,0,.5]} scale={[.7,.3,.5]} />
+  </group>;
 }
 
 function PhotoFrame({ palette: p, position, rotation, front = false }) {
@@ -84,50 +111,66 @@ function Gyroscope({ palette: p, rotor }) {
   </>;
 }
 
-function GlowBloom({ palette: p, rotor }) {
-  return <>
-    <mesh material={p.wood} position={[0,-.49,-.06]}><cylinderGeometry args={[.035,.05,.58,5]} /></mesh>
-    <mesh material={p.mint} position={[-.17,-.48,-.04]} scale={[1,.28,.65]} rotation={[0,0,-.4]}><icosahedronGeometry args={[.22,0]} /></mesh>
-    <mesh material={p.wood} position={[.17,-.56,-.05]} scale={[1,.3,.65]} rotation={[0,0,.4]}><icosahedronGeometry args={[.21,0]} /></mesh>
-    <group position={[0,.18,0]}>
-      <group ref={rotor}>{Array.from({ length: 7 }, (_, index) => {
-        const angle = index * Math.PI * 2 / 7;
-        return <mesh key={index} material={index % 3 === 0 ? p.pink : p.cyan} position={[Math.sin(angle)*.4,Math.cos(angle)*.4,0]} rotation={[.12,0,-angle]} scale={[.27,.49,.2]}><icosahedronGeometry args={[.8,1]} /></mesh>;
-      })}</group>
-      <mesh material={p.mint} position={[0,0,.15]}><dodecahedronGeometry args={[.19,0]} /></mesh>
-    </group>
-  </>;
-}
-
-function ContactPerson({ palette: p, rotor }) {
-  const shoulders = useMemo(() => {
-    const point = (x, y) => new Vector3(x, y, 0);
-    const curve = new CurvePath();
-    curve.add(new CubicBezierCurve3(point(-.64,-.58),point(-.7,-.58),point(-.73,-.55),point(-.73,-.49)));
-    curve.add(new LineCurve3(point(-.73,-.49),point(-.73,-.28)));
-    curve.add(new CubicBezierCurve3(point(-.73,-.28),point(-.73,.05),point(-.4,.2),point(0,.2)));
-    curve.add(new CubicBezierCurve3(point(0,.2),point(.4,.2),point(.73,.05),point(.73,-.28)));
-    curve.add(new LineCurve3(point(.73,-.28),point(.73,-.49)));
-    curve.add(new CubicBezierCurve3(point(.73,-.49),point(.73,-.55),point(.7,-.58),point(.64,-.58)));
-    curve.add(new LineCurve3(point(.64,-.58),point(-.64,-.58)));
-    return curve;
-  }, []);
-  return <group rotation={[0,-.07,0]}>
-    <mesh material={p.metal} position={[0,0,-.035]}><tubeGeometry args={[shoulders,80,.072,10,true]} /></mesh>
-    <mesh material={p.cyan} position={[0,0,.04]}><tubeGeometry args={[shoulders,80,.05,10,true]} /></mesh>
-    <group position={[0,.73,0]}>
-      <mesh material={p.metal} position={[0,0,-.035]}><torusGeometry args={[.32,.07,12,48]} /></mesh>
-      <mesh material={p.cyan} position={[0,0,.04]}><torusGeometry args={[.32,.052,12,48]} /></mesh>
+function MoonGarden({ palette: p, rotor }) {
+  return <group position={[0,.36,0]}>
+    <mesh material={p.stone} position={[0,-.66,0]} scale={[1,.3,.85]}><dodecahedronGeometry args={[.6,0]} /></mesh>
+    <mesh material={p.moss} position={[0,-.55,0]}><cylinderGeometry args={[.56,.5,.1,12]} /></mesh>
+    <mesh material={p.cyan} position={[0,-.49,0]} rotation={[HALF_PI,0,0]}><torusGeometry args={[.44,.012,5,32]} /></mesh>
+    <Vine material={p.leaf} radius={.032} points={[[0,-.5,0],[.12,-.28,0],[-.13,-.05,0],[0,.18,0]]} />
+    <Leaf material={p.leaf} position={[-.19,-.29,.04]} rotation={[.15,.2,-.6]} scale={[1.35,.4,.55]} />
+    <Leaf material={p.mint} position={[.2,-.39,.08]} rotation={[.15,-.3,.6]} scale={[1.2,.36,.55]} />
+    <group position={[0,.25,0]} rotation={[-.24,.15,0]}>
       <group ref={rotor}>
-        <mesh material={p.pink} position={[0,0,.105]}><torusGeometry args={[.32,.018,8,20,Math.PI*.55]} /></mesh>
-        <mesh material={p.mint} position={[0,.32,.105]}><sphereGeometry args={[.032,10,8]} /></mesh>
+        {Array.from({length:8},(_,index) => {
+          const angle = index*Math.PI*2/8;
+          return <group key={index} rotation={[0,0,-angle]}>
+            <Leaf material={index%3 === 0 ? p.pink : p.cyan} position={[0,.31,0]} rotation={[.25,0,0]} scale={[.79,1.9,.48]} />
+            <Leaf material={p.mint} position={[0,.18,-.095]} rotation={[.45,0,.06]} scale={[.6,1.2,.35]} />
+          </group>;
+        })}
+        {Array.from({length:5},(_,index) => <Leaf key={index} material={p.pink} position={[Math.sin(index*1.257)*.15,Math.cos(index*1.257)*.15,.12]} rotation={[-.3,0,-index*1.257]} scale={[.53,.95,.46]} />)}
+        <mesh material={p.wool} position={[0,0,.18]}><dodecahedronGeometry args={[.115,0]} /></mesh>
+        <Gem material={p.mint} position={[0,0,.28]} size={.06} />
       </group>
     </group>
-    <mesh material={p.pink} position={[0,-.58,.1]} rotation={[0,0,HALF_PI]}><cylinderGeometry args={[.018,.018,.76,8]} /></mesh>
+    {[[-.39,-.41,.12,.1],[.38,-.39,.08,.13]].map(([x,y,z,size],index) => <group key={index} position={[x,y,z]}>
+      <mesh material={p.wool} position={[0,-.035,0]}><cylinderGeometry args={[.025,.035,.18,5]} /></mesh>
+      <mesh material={index ? p.pink : p.cyan} position={[0,.055,0]}><sphereGeometry args={[size,8,4,0,Math.PI*2,0,HALF_PI]} /></mesh>
+      <Gem material={p.mint} position={[size*.25,.1,size*.5]} size={.025} />
+    </group>)}
   </group>;
 }
 
-const models = { about: WoolTree, photos: HolographicFrames, projects: CrystalCluster, skills: Gyroscope, interests: GlowBloom, contact: ContactPerson };
+function SpiritLantern({ palette: p, rotor }) {
+  return <group position={[0,.36,0]} rotation={[0,-.12,0]}>
+    <mesh material={p.stone} position={[0,-.69,0]} scale={[1,.3,.8]}><dodecahedronGeometry args={[.49,0]} /></mesh>
+    <mesh material={p.moss} position={[0,-.59,0]}><cylinderGeometry args={[.4,.35,.08,8]} /></mesh>
+    <mesh material={p.metal} position={[0,-.44,0]}><cylinderGeometry args={[.32,.37,.14,6]} /></mesh>
+    <mesh material={p.cyan} position={[0,-.35,0]}><cylinderGeometry args={[.31,.32,.025,6]} /></mesh>
+    <mesh material={p.glass} position={[0,-.02,0]} rotation={[0,Math.PI/6,0]}><cylinderGeometry args={[.29,.29,.66,6,1,true]} /></mesh>
+    {Array.from({length:6},(_,index) => {
+      const angle = (index+.5)*Math.PI/3;
+      return <mesh key={index} material={index%2 ? p.wood : p.metal} position={[Math.sin(angle)*.3,-.01,Math.cos(angle)*.3]}><cylinderGeometry args={[.018,.024,.7,5]} /></mesh>;
+    })}
+    <mesh material={p.cyan} position={[0,.34,0]}><cylinderGeometry args={[.32,.3,.035,6]} /></mesh>
+    <mesh material={p.metal} position={[0,.45,0]}><coneGeometry args={[.4,.22,6]} /></mesh>
+    <mesh material={p.pink} position={[0,.57,0]}><sphereGeometry args={[.045,8,6]} /></mesh>
+    <mesh material={p.wood} position={[0,.71,0]}><torusGeometry args={[.14,.023,6,20]} /></mesh>
+    <group ref={rotor}>
+      <mesh material={p.cyan} position={[0,-.04,0]} scale={[.62,1,.62]}><icosahedronGeometry args={[.2,1]} /></mesh>
+      <Gem material={p.wool} position={[0,.05,.02]} size={.12} scale={[.6,1.7,.6]} rotation={[0,0,-.18]} />
+      <Gem material={p.pink} position={[.14,.14,.02]} size={.035} />
+      <mesh material={p.mint} position={[-.13,-.18,.08]}><sphereGeometry args={[.025,8,6]} /></mesh>
+    </group>
+    <Vine material={p.leaf} radius={.025} points={[[-.28,-.44,.12],[-.57,-.02,.19],[.18,.1,.36],[.25,.39,.17]]} />
+    <Leaf material={p.mint} position={[-.34,-.28,.2]} rotation={[.2,.1,-.65]} scale={[.55,.95,.3]} />
+    <Leaf material={p.leaf} position={[-.23,-.08,.28]} rotation={[.3,.2,.5]} scale={[.4,.7,.3]} />
+    <Leaf material={p.mint} position={[.21,.18,.3]} rotation={[.3,.1,.7]} scale={[.42,.7,.3]} />
+    <Gem material={p.pink} position={[-.37,-.1,.24]} size={.035} />
+  </group>;
+}
+
+const models = { about: EnchantedWillow, photos: HolographicFrames, projects: CrystalCluster, skills: Gyroscope, interests: MoonGarden, contact: SpiritLantern };
 
 function GroveObject({ node, active, running, night }) {
   const body = useRef(null);
@@ -152,9 +195,10 @@ function GroveObject({ node, active, running, night }) {
       material.emissiveIntensity = set(material.emissiveIntensity, target);
     }
     if (rotor.current) {
+      if (node.id === 'about') { rotor.current.rotation.z = Math.sin(t*.45+seed)*.035; rotor.current.rotation.y = Math.sin(t*.24+seed)*.08; }
       if (node.id === 'skills') { rotor.current.rotation.y = spin.current; rotor.current.rotation.z = Math.sin(t*.25+seed)*.07; }
       if (node.id === 'interests') rotor.current.rotation.z = Math.sin(t*.32+seed)*.07;
-      if (node.id === 'contact') rotor.current.rotation.z = spin.current * .45;
+      if (node.id === 'contact') { rotor.current.rotation.y = spin.current * .45; rotor.current.position.y = Math.sin(t*1.2+seed)*.035; rotor.current.rotation.z = Math.sin(t*.65+seed)*.08; }
     }
   };
 

@@ -48,10 +48,7 @@
 .travel-destination-copy { display:grid; gap:4px; min-width:0; flex:1; }
 .travel-destination-copy strong { font:600 24px/1.25 var(--type-heading); letter-spacing:-.02em; }
 .travel-destination-copy > span { color:var(--muted); font:400 16px/1.5 var(--type-ui); }
-.travel-destination > svg { flex:0 0 24px; width:24px; height:24px; color:var(--muted); transition:color 240ms var(--ease-out); }
-.travel-destination[aria-pressed=true] > svg { color:var(--pin-color); }
 .travel-view-photos { display:flex; justify-content:space-between; align-items:center; gap:16px; width:calc(100% - 26px); min-height:48px; margin:18px 0 0 26px; padding:10px 0; border:0; border-bottom:1px solid var(--world-line); text-align:left; background:transparent; color:var(--text); font:500 16px/1.5 var(--type-ui); transition:color 240ms var(--ease-out),border-color 240ms var(--ease-out); }
-.travel-view-photos > span { color:var(--electric-pink); font-size:24px; }
 .travel-view-photos:is(:hover,:focus-visible) { color:var(--accent); border-color:var(--electric-blue); }
 .vacation-selected-gallery { min-width:0; min-height:280px; }
 .vacation-selected-gallery:focus-visible { outline:2px solid var(--accent); outline-offset:8px; border-radius:8px; }
@@ -75,7 +72,7 @@
   .travel-destination-list { display:flex; flex-wrap:wrap; gap:8px; padding:8px 0 0; }
   .travel-destination-label { flex-basis:100%; margin:0 0 6px 8px; }
   .travel-destination { flex:1 1 135px; min-height:76px; padding:12px; gap:10px; border:1px solid var(--world-line); }
-  .travel-destination::before,.travel-destination > svg { display:none; }
+  .travel-destination::before { display:none; }
   .travel-destination-dot { flex-basis:12px; height:12px; border-width:2px; }
   .travel-destination-copy strong { font-size:20px; }
   .travel-destination-copy > span { font-size:16px; }
@@ -84,5 +81,5 @@
 }
 @media(prefers-reduced-motion:reduce) {
   .travel-globe-orbit i { animation:none!important; }
-  .travel-earth-fallback,.travel-pin-target,.travel-pin-label,.travel-destination,.travel-destination-dot,.travel-destination > svg { transition:none; }
+  .travel-earth-fallback,.travel-pin-target,.travel-pin-label,.travel-destination,.travel-destination-dot { transition:none; }
 }

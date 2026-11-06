@@ -23,8 +23,6 @@
 .site-footer .footer-link-list a { display:inline-flex; align-items:center; gap:10px; min-height:44px; max-width:100%; padding-block:8px; color:var(--muted); font:400 16px/1.5 var(--type-ui); letter-spacing:.015em; text-decoration-color:transparent; text-underline-offset:5px; transition:color 240ms var(--ease-out),text-decoration-color 240ms var(--ease-out); }
 .footer-link-list a > span { min-width:0; overflow-wrap:anywhere; }
 .site-footer .footer-link-list a:is(:hover,:focus-visible) { color:var(--accent); text-decoration:underline; text-decoration-color:color-mix(in srgb,var(--electric-pink) 70%,transparent); }
-.footer-link-arrow { flex:0 0 20px; color:var(--electric-pink); opacity:.7; transition:opacity 240ms var(--ease-out),color 240ms var(--ease-out); }
-.footer-link-list a:is(:hover,:focus-visible) .footer-link-arrow { opacity:1; color:var(--accent); }
 .footer-social-icon { flex:0 0 24px; color:var(--electric-blue); transition:color 240ms var(--ease-out),filter 280ms var(--ease-out); }
 .footer-social-list li:nth-child(even) .footer-social-icon { color:var(--electric-pink); }
 .footer-social-list a:is(:hover,:focus-visible) .footer-social-icon { color:var(--rose); filter:drop-shadow(0 0 6px var(--line-glow)); }
@@ -47,12 +45,11 @@
   .footer-column > h2 { font-size:20px; margin-bottom:12px; }
   .footer-social-column { grid-column:1/-1; }
   .footer-social-list { display:flex; flex-wrap:wrap; gap:8px 22px; }
-  .footer-social-list .footer-link-arrow { display:none; }
   .footer-bottom { min-height:110px; padding-right:68px; gap:6px; }
   .site-footer .footer-stack { column-gap:8px; }
 }
 @media(prefers-reduced-motion:reduce) {
   .footer-contour-current { animation:none!important; stroke-dasharray:none; opacity:.12; }
   .footer-replay { display:none; }
-  .footer-spark,.site-footer .footer-link-list a,.footer-link-arrow,.footer-social-icon,.footer-replay,.footer-replay svg { transition:none; }
+  .footer-spark,.site-footer .footer-link-list a,.footer-social-icon,.footer-replay,.footer-replay svg { transition:none; }
 }

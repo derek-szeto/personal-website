@@ -1,4 +1,9 @@
-.about-biography { min-width:0; }
+#about.section { grid-template-columns:minmax(0,1fr); gap:32px; }
+#about > .section-heading { position:static; display:flex; align-items:center; flex-wrap:wrap; gap:20px; margin:0; }
+#about > .section-heading h2 { margin:0; }
+#about .section-light-rail { flex:1; max-width:180px; margin:0; }
+#about .section-heading .section-plants { width:92px; margin:0 0 0 auto; }
+.about-biography { min-width:0; max-width:790px; }
 .about-biography .about-name { margin:0 0 18px; color:var(--text); font:400 clamp(2.5rem,4.3vw,3.6rem)/1.1 var(--type-display); letter-spacing:-.035em; }
 .about-biography .about-introduction { margin:0 0 20px; color:var(--text); font:400 var(--text-body,18px)/1.7 var(--type-body); }
 .about-interests-link { display:inline-flex; align-items:center; gap:10px; min-height:48px; margin-top:16px; }
@@ -8,4 +13,9 @@
 .about-courses h3 { margin:0 0 12px; color:var(--text); font:600 var(--title-card,20px)/1.4 var(--type-heading); }
 .about-course-list { display:flex; flex-wrap:wrap; gap:10px; margin:0; padding:0; list-style:none; }
 .about-course-list li { max-width:100%; padding:10px 14px; border:1px solid var(--border); border-radius:8px; background:color-mix(in srgb,var(--accent) 5%,var(--surface)); color:var(--text); font:var(--text-small,16px)/1.5 var(--type-body); overflow-wrap:anywhere; }
+#about .about-course-list { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); }
+#about .about-course-list li { display:flex; align-items:center; min-height:76px; text-wrap:balance; }
+@media(max-width:1050px) { #about .about-course-list { grid-template-columns:minmax(0,1fr); } #about .about-course-list li { min-height:52px; } }
+@media(max-width:760px) { #about.section { gap:24px; } #about .section-light-rail { max-width:110px; } #about .about-course-list { grid-template-columns:repeat(3,minmax(0,1fr)); } }
+@media(max-width:600px) { #about .about-course-list { grid-template-columns:minmax(0,1fr); } }
 @media(max-width:480px) { .about-course-list li { padding:8px 12px; } }

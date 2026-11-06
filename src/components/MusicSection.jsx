@@ -33,7 +33,6 @@ function TrackRow({ track }) {
   return <Tag className="music-track-row" href={href} target={href ? '_blank' : undefined} rel={href ? 'noopener noreferrer' : undefined}>
     <TrackArtwork src={track.artwork} />
     <span className="music-track-text"><strong>{track.title || 'Untitled track'}</strong><span>{track.artists || 'Unknown artist'}</span></span>
-    {href && <span className="music-track-arrow" aria-hidden="true">&#8599;</span>}
   </Tag>;
 }
 
@@ -45,7 +44,6 @@ export function MusicArtistCard({ artist }) {
   return <Tag className="music-artist" href={href} target={href ? '_blank' : undefined} rel={href ? 'noopener noreferrer' : undefined}>
     {image ? <img src={image} alt="" loading="lazy" decoding="async" /> : <span className="music-artist-placeholder" aria-hidden="true"><MusicNote /></span>}
     <span className="music-artist-name">{name === 'PARTYNEXTDOOR' ? <>PARTY<wbr />NEXT<wbr />DOOR</> : name}</span>
-    {href && <span className="music-artist-arrow" aria-hidden="true">&#8599;</span>}
   </Tag>;
 }
 
@@ -54,7 +52,7 @@ export function MusicAlbumCard({ album }) {
   const artwork = imageLink(album.artwork);
   const Tag = href ? 'a' : 'div';
   return <Tag className="music-album" href={href} target={href ? '_blank' : undefined} rel={href ? 'noopener noreferrer' : undefined}>
-    <span className="music-album-cover">{artwork ? <img src={artwork} alt="" loading="lazy" decoding="async" /> : <span className="music-album-placeholder" aria-hidden="true"><MusicNote /></span>}{href && <span className="music-album-arrow" aria-hidden="true">&#8599;</span>}</span>
+    <span className="music-album-cover">{artwork ? <img src={artwork} alt="" loading="lazy" decoding="async" /> : <span className="music-album-placeholder" aria-hidden="true"><MusicNote /></span>}</span>
     <span className="music-album-copy"><strong>{album.title || 'Untitled album'}</strong><span>{album.artists || 'Unknown artist'}</span></span>
   </Tag>;
 }
@@ -177,10 +175,10 @@ export default function MusicSection({ endpoint = '/api/spotify', enabled = fals
         <div className="music-now-body">
           <MusicTurntable artwork={imageLink(track?.artwork)} hasTrack={Boolean(track)} playing={isPlaying} spinning={isPlaying && motionActive} />
           <motion.div className="music-now-text" key={track ? `${track.url || track.title}-${track.artists}` : 'silence'} initial={reduced || !track ? false : { opacity: .6 }} animate={{ opacity: 1 }} transition={reduced ? { duration: 0 } : quickTransition}>
-            {track ? <><div className="music-track-title-line"><h3>{track.title || 'Untitled track'}</h3><span className="music-equalizer" aria-hidden="true"><i /><i /><i /><i /><i /></span></div><p>{track.artists || 'Unknown artist'}</p>{currentHref && <a className="music-listen-link" href={currentHref} target="_blank" rel="noopener noreferrer">Listen on Spotify <span aria-hidden="true">&#8599;</span></a>}</> : loading ? <span className="music-now-skeleton music-skeleton-copy" aria-hidden="true"><i /><i /></span> : <span className="music-silent-mark" aria-hidden="true"><MusicNote /></span>}
+            {track ? <><div className="music-track-title-line"><h3>{track.title || 'Untitled track'}</h3><span className="music-equalizer" aria-hidden="true"><i /><i /><i /><i /><i /></span></div><p>{track.artists || 'Unknown artist'}</p>{currentHref && <a className="music-listen-link" href={currentHref} target="_blank" rel="noopener noreferrer">Listen on Spotify</a>}</> : loading ? <span className="music-now-skeleton music-skeleton-copy" aria-hidden="true"><i /><i /></span> : <span className="music-silent-mark" aria-hidden="true"><MusicNote /></span>}
           </motion.div>
         </div>
-        {profileHref && <a className="music-profile-link" href={profileHref} target="_blank" rel="noopener noreferrer">My Spotify <span aria-hidden="true">&#8599;</span></a>}
+        {profileHref && <a className="music-profile-link" href={profileHref} target="_blank" rel="noopener noreferrer">My Spotify</a>}
       </article>
       <article className="music-artists-card"><div className="music-card-heading"><h3>Top artists</h3><span className="music-card-light" aria-hidden="true" /></div>
         <div className="music-artists-stage" aria-busy={loading}>

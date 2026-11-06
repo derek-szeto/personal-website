@@ -10,12 +10,14 @@ export default function GroveFallback({ type }) {
   const prism = `url(#${id})`;
   const objects = {
     about: <>
-      <path d="m43 137 57-24 57 24-57 25Z" fill={mint} />
-      <path d="m43 137 57 25v16l-33-12Z" fill={ink} stroke={blue} /><path d="m100 162 57-25-23 29-34 12Z" fill={blue} />
-      <path d="m93 91 14-4v51l-14 5Z" fill={ink} stroke={mint} />
-      <path d="M51 98c-13-6-17-22-7-32-2-15 11-27 25-24 7-15 27-17 37-5 14-8 31 0 31 15 16 0 27 16 19 30 8 13-1 28-16 28H72Z" fill={wool} />
-      <path d="M52 96c13 3 22-2 26-10 12 8 26 5 33-5 13 8 30 5 39-4l6 5c8 13-1 28-16 28H72Z" fill={mint} stroke="none" />
-      <path d="m65 62 13-5 9 5-12 6Zm40-12 13 5-10 7-13-6Zm15 44 12-6 9 6-12 6Z" fill={blue} stroke="none" opacity=".55" />
+      <path d="m45 147 55-22 55 22-21 30-34 11-37-14Z" fill={ink} />
+      <path d="m45 147 55-22 55 22-55 21Z" fill={mint} />
+      <path d="m77 172 4 16 7-18m30 3 4 13 6-18" fill={blue} stroke="none" />
+      <path d="M97 150c-14-22 6-32 3-58l8-27m-7 47L71 86m32 17 25-19m-27 51-21 16m23-17 23 16" stroke={ink} strokeWidth="9" />
+      <path d="m35 77 18-24 32-7 17-17 32 15 23 29-20 20-33-1-23 6-28-6Z" fill={mint} />
+      <path d="m35 77 49-31-10 43Zm49-31 18-17 12 49Zm30 32 20-34 23 29-20 20Z" fill={blue} fillOpacity=".5" />
+      {[55,76,124,146].map((x,index) => <g key={x}><path d={`M${x} 83q-9 19 0 ${27+index%2*12}`} stroke={mint} strokeWidth="2" /><path d={`m${x} 96-6 7 6 7 5-7Z`} fill={mint} stroke="none" /><path d={`m${x} ${111+index%2*12}-4 6 4 6 4-6Z`} fill={index%2 ? blue : pink} stroke="none" /></g>)}
+      <path d="M71 148q-13-15-23-9 5 14 23 9Zm57 1q11-18 23-12-5 14-23 12Z" fill={mint} />
     </>,
     photos: <>
       <path d="m39 53 77-21 29 92-77 21Z" fill={ink} stroke={pink} strokeWidth="4" />
@@ -40,18 +42,21 @@ export default function GroveFallback({ type }) {
       <circle cx="166" cy="95" r="6" fill={blue} /><circle cx="66" cy="151" r="5" fill={pink} />
     </>,
     interests: <>
-      <path d="M100 111v55m0-14c-19 0-30-10-34-23 18-2 30 8 34 23Zm1 7c18-1 29-12 31-25-18 0-28 11-31 25Z" fill={mint} stroke={ink} strokeWidth="3" />
-      {[blue, pink, mint, blue, pink, mint].map((color, index) => <path key={index} transform={`rotate(${index * 60} 100 85)`} d="M100 87C76 77 80 49 100 35c20 14 24 42 0 52Z" fill={color} />)}
-      <path d="m100 73 12 12-12 12-12-12Z" fill={wool} /><path d="m100 78 7 7-7 7-7-7Z" fill={pink} stroke="none" />
+      <path d="m43 160 57-19 57 19-18 20H67Z" fill={ink} /><ellipse cx="100" cy="158" rx="53" ry="14" fill={mint} /><ellipse cx="100" cy="158" rx="38" ry="9" stroke={blue} strokeWidth="2" />
+      <path d="M100 149c18-32-16-32 0-64m0 47c-18-16-34-13-37-20 0 17 14 24 37 20Zm3 12c18-12 30-8 33-20-18-3-30 7-33 20Z" fill={mint} stroke={ink} strokeWidth="3" />
+      {[blue,pink,blue,mint,blue,pink,blue,mint].map((color,index) => <g key={index} transform={`rotate(${index*45} 100 82)`}><path d="M100 89 85 70 89 40 100 27l12 13 3 30Z" fill={color} /><path d="m100 27 1 55-12-42Z" fill={wool} fillOpacity=".32" stroke="none" /></g>)}
+      {[0,72,144,216,288].map(angle => <path key={angle} transform={`rotate(${angle} 100 82)`} d="M100 88 91 67l9-17 10 17Z" fill={pink} />)}
+      <path d="m100 72 10 10-10 10-10-10Z" fill={wool} />
+      <path d="M55 161v-13m87 16v-19" stroke={wool} strokeWidth="5" /><path d="M43 149q12-24 24 0Zm83-3q16-29 32 0Z" fill={pink} /><circle cx="54" cy="143" r="2" fill={mint} /><circle cx="144" cy="137" r="2" fill={wool} />
     </>,
     contact: <>
-      <circle cx="100" cy="45" r="29" stroke={ink} strokeWidth="11" />
-      <circle cx="100" cy="45" r="29" stroke={blue} strokeWidth="7" />
-      <path d="M100 16a29 29 0 0 1 29 29" stroke={pink} strokeWidth="3" />
-      <circle cx="129" cy="45" r="3" fill={mint} stroke="none" />
-      <path d="M34 151v-18c0-28 31-42 66-42s66 14 66 42v18q0 11-11 11H45q-11 0-11-11Z" stroke={ink} strokeWidth="11" />
-      <path d="M34 151v-18c0-28 31-42 66-42s66 14 66 42v18q0 11-11 11H45q-11 0-11-11Z" stroke={blue} strokeWidth="7" />
-      <path d="M67 162h66" stroke={pink} strokeWidth="3" />
+      <path d="m55 170 45-17 45 17-17 13H73Z" fill={ink} /><ellipse cx="100" cy="167" rx="40" ry="10" fill={mint} />
+      <ellipse cx="100" cy="35" rx="12" ry="17" stroke={ink} strokeWidth="5" /><circle cx="100" cy="53" r="4" fill={pink} />
+      <path d="m63 76 37-23 37 23-10 8H73Z" fill={ink} /><path d="m63 76 37-5 37 5" stroke={blue} strokeWidth="3" />
+      <path d="M73 83h54v68H73Z" fill={blue} fillOpacity=".14" stroke={blue} /><path d="m73 83 14 7h26l14-7m-40 7v61m26-61v61" stroke={ink} strokeWidth="3" />
+      <path d="m100 96 12 20-4 16-8 7-11-13 2-13Z" fill={blue} /><path d="m100 94 4 30-7 8-3-16Z" fill={wool} stroke="none" /><circle cx="113" cy="103" r="3" fill={pink} />
+      <path d="m68 149 32 6 32-6v12l-32 7-32-7Z" fill={ink} stroke={blue} />
+      <path d="M66 158c-35-40 68-28 63-80m-59 57q-21-2-23-19 19-1 23 19Zm43-26q-1-17 14-24 7 15-14 24Z" fill={mint} stroke={mint} strokeWidth="2" /><path d="m67 110-5 7 5 7 5-7Z" fill={pink} stroke="none" />
     </>,
   };
   return <svg className="grove-fallback" viewBox="0 0 200 200" role="presentation" aria-hidden="true" focusable="false" fill="none">

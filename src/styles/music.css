@@ -69,9 +69,7 @@
 .music-artist > img,.music-artist-placeholder { display:block; width:80px; height:80px; border-radius:7px; object-fit:contain; box-shadow:0 6px 20px #00162730; }
 .music-artist-placeholder { display:grid; place-items:center; color:var(--muted); background:var(--tag); }
 .music-artist-name { display:block; min-width:0; width:100%; font:500 18px/1.45 var(--type-ui); overflow-wrap:normal; word-break:normal; text-wrap:balance; }
-.music-artist-arrow { position:absolute; top:12px; right:12px; color:var(--electric-pink); opacity:.8; font-size:18px; line-height:1.3; transition:color 280ms var(--ease-out),opacity 280ms var(--ease-out); }
 .music-artist[href]:is(:hover,:focus-visible) { border-color:color-mix(in srgb,var(--electric-pink) 65%,var(--electric-blue)); background-color:var(--art); box-shadow:0 0 22px color-mix(in srgb,var(--electric-blue) 9%,transparent),inset 0 0 22px color-mix(in srgb,var(--electric-pink) 4%,transparent); }
-.music-artist[href]:is(:hover,:focus-visible) .music-artist-arrow { color:var(--accent); }
 .music-artist[href]:is(:hover,:focus-visible)::before { border-color:var(--electric-pink); }
 .music-albums-card { grid-column:1/-1; background:radial-gradient(ellipse at 100% 10%,color-mix(in srgb,var(--electric-pink) 6%,transparent),transparent 65%),var(--surface); }
 .music-albums-heading { min-width:0; }
@@ -82,7 +80,6 @@
 .music-album-cover { position:relative; display:block; width:100%; max-width:320px; aspect-ratio:1; overflow:hidden; border:1px solid var(--border); border-radius:8px; background:var(--tag); box-shadow:0 10px 24px #00162722; }
 .music-album-cover > img { display:block; width:100%; height:100%; object-fit:contain; }
 .music-album-placeholder { display:grid; place-items:center; color:var(--muted); }
-.music-album-arrow { position:absolute; right:10px; bottom:10px; display:grid; place-items:center; width:36px; height:36px; border:1px solid var(--border); border-radius:8px; background:var(--surface); color:var(--accent); font-size:21px; }
 .music-album-copy { display:grid; width:100%; min-width:0; gap:8px; }
 .music-album-copy > strong { color:var(--text); font:600 20px/1.35 var(--type-heading); overflow-wrap:anywhere; text-wrap:balance; }
 .music-album-copy > span { color:var(--muted); font:16px/1.5 var(--type-body); overflow-wrap:anywhere; }
@@ -96,16 +93,14 @@
 .music-artists-empty p,.music-favorites-empty p { font:16px/1.6 var(--type-body); color:var(--muted); margin:20px 0 0; }
 .music-favorites-card { grid-column:1/-1; }
 .music-track-list { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; align-content:start; }
-.music-track-row { display:grid; grid-template-columns:64px minmax(0,1fr) 18px; align-items:center; gap:14px; min-width:0; min-height:106px; padding:14px; border:1px solid color-mix(in srgb,var(--border) 85%,transparent); border-radius:12px; background:color-mix(in srgb,var(--page) 52%,var(--surface)); color:var(--text); text-decoration:none; transition:background-color 280ms var(--ease-out),border-color 280ms var(--ease-out),box-shadow 280ms var(--ease-out); }
+.music-track-row { display:grid; grid-template-columns:64px minmax(0,1fr); align-items:center; gap:14px; min-width:0; min-height:106px; padding:14px; border:1px solid color-mix(in srgb,var(--border) 85%,transparent); border-radius:12px; background:color-mix(in srgb,var(--page) 52%,var(--surface)); color:var(--text); text-decoration:none; transition:background-color 280ms var(--ease-out),border-color 280ms var(--ease-out),box-shadow 280ms var(--ease-out); }
 .music-track-artwork { display:block; width:64px; height:64px; border-radius:5px; object-fit:contain; }
 .music-track-artwork-empty { display:grid; place-items:center; color:var(--muted); background:var(--tag); }
 .music-track-text { display:grid; gap:6px; min-width:0; }
 .music-track-text strong { font:500 18px/1.4 var(--type-heading); overflow-wrap:anywhere; transition:color 280ms var(--ease-out); }
 .music-track-text > span { color:var(--muted); font:16px/1.5 var(--type-body); overflow-wrap:anywhere; }
-.music-track-arrow { color:var(--electric-pink); justify-self:end; font-size:20px; transition:color 280ms var(--ease-out); }
 .music-track-row[href]:is(:hover,:focus-visible) { background-color:var(--art); border-color:color-mix(in srgb,var(--electric-blue) 60%,var(--border)); box-shadow:0 0 18px var(--line-glow); }
 .music-track-row[href]:is(:hover,:focus-visible) .music-track-text strong { color:var(--accent); }
-.music-track-row[href]:is(:hover,:focus-visible) .music-track-arrow { color:var(--accent); }
 .music-favorites-empty { display:flex; align-items:center; justify-content:center; gap:13px; min-height:180px; color:var(--muted); border:1px dashed var(--border); border-radius:12px; padding:20px; text-align:center; }
 .music-favorites-empty p { margin:0; }
 .music-retry { min-width:72px; min-height:44px; padding:8px; border:1px solid var(--border); border-radius:8px; color:var(--accent); font:500 16px/1.5 var(--type-ui); transition:color 280ms var(--ease-out),background-color 280ms var(--ease-out); }
@@ -154,7 +149,6 @@
   .music-artist > img,.music-artist-placeholder,.music-artist > .music-skeleton-cover { width:64px; height:64px; }
   .music-artist::before { top:14px; width:72px; height:72px; }
   .music-artist-name { font-size:16px; }
-  .music-artist-arrow { top:8px; right:8px; font-size:16px; }
   .music-artist .music-skeleton-copy { width:100%; justify-items:center; }
   .music-album { padding:12px 12px 20px; }
   .music-track-row { grid-template-columns:52px minmax(0,1fr) 18px; padding:12px; gap:10px; }
@@ -170,6 +164,6 @@ html[data-ambient-paused=true] .music-equalizer i,
 html[data-ambient-paused=true] .music-status-dot { animation-play-state:paused!important; }
 @media(prefers-reduced-motion:reduce) {
   .music-vinyl-spin,.music-vinyl-shine,.music-platter-orbit::after,.music-equalizer i,.music-status-dot.is-loading { animation:none!important; }
-  .music-tonearm > i,.music-refresh-label,.music-artist,.music-artist-arrow,.music-album,.music-track-text strong,.music-track-arrow,.music-track-row,.music-listen-link,.music-profile-link,.music-retry { transition:none; }
+  .music-tonearm > i,.music-refresh-label,.music-artist,.music-album,.music-track-text strong,.music-track-row,.music-listen-link,.music-profile-link,.music-retry { transition:none; }
 }
 

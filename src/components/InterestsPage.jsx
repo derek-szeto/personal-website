@@ -191,7 +191,7 @@ export default function InterestsPage({ profile, interests, valorant, music, sec
   }
 
   return <div ref={page} className="site-container interests-page">
-    <a className="interests-home font-ui text-subtle" href="#home">&#8592; Home</a>
+    <a className="interests-home font-ui text-subtle" href="#home">Home</a>
     <header className="interests-page-heading"><div><h1>Beyond the screen<span>.</span></h1><p>Interests &amp; a little more about me.</p></div><div className="interests-light-lines" aria-hidden="true"><i /><i /><i /></div></header>
     <LayoutGroup id={`interest-navigation-${navigationId}`}>
       <motion.nav ref={directory} className="interests-navigation" aria-label="Interest sections" layoutScroll
@@ -200,7 +200,7 @@ export default function InterestsPage({ profile, interests, valorant, music, sec
         {sections.map(item => <motion.a key={item.id} href={`#/interests/${item.id}`} onClick={event => navigate(event, item.id)} aria-current={activeSection === item.id ? 'location' : undefined} className={activeSection === item.id ? 'is-current' : ''}
           variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: reduced ? { duration: 0 } : quickTransition } }}>
           {activeSection === item.id && <motion.span className="interest-nav-highlight" layoutId="active-section" aria-hidden="true" initial={false} transition={reduced ? { duration: 0 } : quickTransition} />}
-          <span>{item.label}</span><span className="interest-nav-arrow" aria-hidden="true">&#8595;</span>
+          <span>{item.label}</span>
         </motion.a>)}
       </motion.nav>
     </LayoutGroup>
@@ -209,7 +209,7 @@ export default function InterestsPage({ profile, interests, valorant, music, sec
         <SectionReveal immediate={initialTarget.current === 'about'} reduced={reduced}>
         <section className="interest-about" aria-labelledby="interest-about-title">
           {profile.portrait?.src ? <div className="interest-about-portrait interest-about-person"><ProfilePortrait photo={profile.portrait} /></div> : <div className="interest-about-portrait" aria-hidden="true"><div className="interest-about-initials">{profile.initials}<span>&#10035;</span></div><Botanical /></div>}
-          <div className="interest-about-copy"><p className="interest-overline">ABOUT ME</p><h2 id="interest-about-title">{profile.name}</h2>{profile.introduction && <p>{profile.introduction}</p>}{profile.about.map((paragraph, i) => <p key={i}>{paragraph}</p>)}<CurrentClasses courses={profile.courses} /><a className="interest-photo-link" href="#photos">Life in photos <span aria-hidden="true">&#8599;</span></a></div>
+          <div className="interest-about-copy"><p className="interest-overline">ABOUT ME</p><h2 id="interest-about-title">{profile.name}</h2>{profile.introduction && <p>{profile.introduction}</p>}{profile.about.map((paragraph, i) => <p key={i}>{paragraph}</p>)}<CurrentClasses courses={profile.courses} /><a className="interest-photo-link" href="#photos">Life in photos </a></div>
         </section>
         </SectionReveal>
       </div>

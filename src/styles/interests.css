@@ -18,7 +18,6 @@
 .interests-navigation a:focus-visible { outline:2px solid var(--rose); outline-offset:3px; }
 .interests-navigation a.is-current { color:var(--page); }
 .interest-nav-highlight { position:absolute; inset:-1px; z-index:0; pointer-events:none; border:1px solid var(--accent); border-radius:8px; background:var(--accent); box-shadow:inset 0 -2px 0 var(--rose); }
-.interest-nav-arrow { opacity:.6; }
 .interest-about { display:grid; grid-template-columns:minmax(160px,.8fr) minmax(0,1.2fr); min-height:350px; border:1px solid var(--border); border-radius:15px; overflow:hidden; background:var(--surface); }
 .interest-about-with-photo { grid-template-columns:minmax(0,1fr); }
 .interest-about-photo { min-width:0; border-bottom:1px solid var(--border); background:var(--page); }
@@ -53,7 +52,7 @@
 .interest-directory-card:hover .directory-icon,.interest-directory-card:focus-visible .directory-icon { color:var(--rose); }
 .interest-directory-card:hover .interest-portal,.interest-directory-card:focus-visible .interest-portal { opacity:1; border-color:var(--accent); box-shadow:inset 0 0 20px color-mix(in srgb,var(--accent) 23%,transparent),0 0 15px color-mix(in srgb,var(--rose) 15%,transparent); }
 @media(max-width:900px) { .interest-about-copy { padding:28px; } }
-@media(max-width:700px) { .interests-page { padding-top:25px; } .interests-home { margin-bottom:25px; } .interests-page-heading { align-items:flex-start; gap:16px; margin-bottom:22px; padding-bottom:23px; } .interests-heading-art { width:76px; margin-top:4px; } .interests-navigation { padding:8px; margin-bottom:28px; border-radius:11px; } .interests-navigation a { flex:0 0 auto; padding:12px 18px; } .interest-nav-arrow { display:none; } .interests-page-heading h1 { font-size:clamp(2.3rem,8vw,3rem); } .interests-stream { gap:42px; } }
+@media(max-width:700px) { .interests-page { padding-top:25px; } .interests-home { margin-bottom:25px; } .interests-page-heading { align-items:flex-start; gap:16px; margin-bottom:22px; padding-bottom:23px; } .interests-heading-art { width:76px; margin-top:4px; } .interests-navigation { padding:8px; margin-bottom:28px; border-radius:11px; } .interests-navigation a { flex:0 0 auto; padding:12px 18px; } .interests-page-heading h1 { font-size:clamp(2.3rem,8vw,3rem); } .interests-stream { gap:42px; } }
 @media(max-width:600px) { .interest-about { grid-template-columns:1fr; } .interest-about-portrait { min-height:190px; border-right:0; border-bottom:1px solid var(--border); } .interest-about-portrait .botanical { width:140px; left:auto; right:0; } }
 @media(prefers-reduced-motion:reduce) { .interests-navigation a,.interests-home,.interest-photo-link,.interest-directory-card .directory-icon,.interest-directory-card .interest-portal { transition:none; } }
 

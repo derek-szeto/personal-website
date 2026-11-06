@@ -20,7 +20,7 @@ function PhotoCard({ photo, showCaption = true }) {
   const label = [photo.caption, photo.location].filter(Boolean).join(', ');
   return <figure className={`photo-card${photo.src ? ' is-interactive' : ''}`} data-category={photo.category.toLowerCase()} style={{ '--photo-ratio': ratio }}>
         {photo.src ? <Dialog.Root>
-          <Dialog.Trigger asChild><button className="photo-open" type="button" aria-label={`View photo: ${label}`}><img src={photo.src} alt={photo.alt || photo.caption} width={photo.width} height={photo.height} loading="lazy" decoding="async" /><span className="photo-expand" aria-hidden="true">&#8599;</span></button></Dialog.Trigger>
+          <Dialog.Trigger asChild><button className="photo-open" type="button" aria-label={`View photo: ${label}`}><img src={photo.src} alt={photo.alt || photo.caption} width={photo.width} height={photo.height} loading="lazy" decoding="async" /></button></Dialog.Trigger>
           <Dialog.Portal><Dialog.Overlay className="quest-overlay" /><Dialog.Content className="photo-lightbox" aria-describedby={undefined}>
             <Dialog.Title className="visually-hidden">{photo.caption}</Dialog.Title>
             <img src={photo.src} alt={photo.alt || photo.caption} width={photo.width} height={photo.height} />

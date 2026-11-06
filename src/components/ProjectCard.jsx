@@ -1,6 +1,5 @@
 import { forwardRef } from 'react';
 import ForestArt from './ForestArt.jsx';
-import Arrow from './Arrow.jsx';
 import GamePreview from './GamePreview.jsx';
 import ProjectImage from './ProjectImage.jsx';
 import * as Dialog from '@radix-ui/react-dialog';
@@ -23,7 +22,7 @@ const ProjectCard = forwardRef(function ProjectCard({ project, number = 1 }, ref
       {project.category && <p className="card-category">{project.category}</p>}<h3 className="font-heading">{project.title}</h3><p className="project-summary">{project.description}</p>
       {tags.length > 0 && <ul className="tags" aria-label="Project technologies">{tags.map(tag => <li key={tag}>{tag}</li>)}</ul>}
       <Dialog.Root>
-        <Dialog.Trigger asChild><button className="quest-details font-ui" type="button" aria-label={`Details for ${project.title}`}>Details <Arrow /></button></Dialog.Trigger>
+        <Dialog.Trigger asChild><button className="quest-details font-ui" type="button" aria-label={`Details for ${project.title}`}>Details </button></Dialog.Trigger>
         <Dialog.Portal>
           <Dialog.Overlay className="quest-overlay" />
           <Dialog.Content className="quest-dialog project-dialog">
@@ -35,8 +34,8 @@ const ProjectCard = forwardRef(function ProjectCard({ project, number = 1 }, ref
             {details.length > 0 && <ul className="project-detail-list">{details.map((detail, index) => <li key={`${index}-${detail}`}>{detail}</li>)}</ul>}
             {tags.length > 0 && <ul className="tags" aria-label="Project technologies">{tags.map(tag => <li key={tag}>{tag}</li>)}</ul>}
             {hasLinks && <div className="project-links">
-              {project.sourceUrl && <a className="button button-primary" href={project.sourceUrl} target="_blank" rel="noopener noreferrer">Source code &#8599;</a>}
-              {project.liveUrl && <a className="button button-primary" href={project.liveUrl} target="_blank" rel="noopener noreferrer">View project &#8599;</a>}
+              {project.sourceUrl && <a className="button button-primary" href={project.sourceUrl} target="_blank" rel="noopener noreferrer">Source code</a>}
+              {project.liveUrl && <a className="button button-primary" href={project.liveUrl} target="_blank" rel="noopener noreferrer">View project</a>}
             </div>}
             <Dialog.Close className="quest-close" aria-label="Close project details">&#215;</Dialog.Close>
           </Dialog.Content>

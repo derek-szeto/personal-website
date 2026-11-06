@@ -32,7 +32,7 @@ export default function ProjectsPage({ projects = [] }) {
     searchInput.current?.focus({ preventScroll: true });
   };
   return <section className="site-container projects-page" aria-labelledby="projects-title">
-    <a className="text-link village-return" href="#home">&#8592; Home</a>
+    <a className="text-link village-return" href="#home">Home</a>
     <div className="journal-heading">
       <h1 id="projects-title">Projects</h1>
       <span className="projects-light-lines" aria-hidden="true"><i /><i /></span>

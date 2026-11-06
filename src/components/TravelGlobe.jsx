@@ -125,13 +125,12 @@ export default function TravelGlobe({ destinations, selectedId, onSelect, galler
       {destinations.map(place => <button key={place.id} ref={node => { if (node) destinationNodes.current.set(place.id, node); else destinationNodes.current.delete(place.id); }} type="button" className="travel-destination" aria-pressed={selectedId === place.id} aria-controls={galleryId} onClick={() => selectDestination(place.id)} style={{ '--pin-color': place.color }}>
         <span className="travel-destination-dot" aria-hidden="true" />
         <span className="travel-destination-copy"><strong>{place.label}</strong><span>{[place.country, place.period].filter(Boolean).join(' · ')}</span></span>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true" focusable="false"><path d="M5 12h14m-6-6 6 6-6 6" /></svg>
       </button>)}
       <button className="travel-view-photos" type="button" onClick={() => {
         const gallery = document.getElementById(galleryId);
         gallery?.focus({ preventScroll: true });
         gallery?.scrollIntoView({ behavior: reduced ? 'instant' : 'smooth', block: 'start' });
-      }}>View {selected?.photoCount || ''} {selected?.photoCount === 1 ? 'photo' : 'photos'}<span aria-hidden="true">↓</span></button>
+      }}>View {selected?.photoCount || ''} {selected?.photoCount === 1 ? 'photo' : 'photos'}</button>
     </div>
   </div>;
 }

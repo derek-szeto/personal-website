@@ -39,7 +39,7 @@ export default function Contact({ email, phone, links = [] }) {
       </div>
       <div className="contact-card-grid grid gap-3 sm:grid-cols-2">
         {cards.map(card => <a key={card.url} className="contact-method relative flex min-w-0 flex-col rounded-xl border focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-magic" href={card.url} target={card.external ? '_blank' : undefined} rel={card.external ? 'noopener noreferrer' : undefined} data-channel={card.icon}>
-          <span className="contact-method-top flex items-start justify-between"><span className="contact-method-icon"><ContactIcon type={card.icon} /></span><svg className="contact-method-arrow" aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M6 18 18 6M6 6h12v12" /></svg></span>
+          <span className="contact-method-top flex items-start justify-between"><span className="contact-method-icon"><ContactIcon type={card.icon} /></span></span>
           <span className="contact-method-label font-ui uppercase text-subtle">{card.label}</span>
           <span className="contact-method-value font-sans font-medium text-ink">{card.value}</span>
         </a>)}

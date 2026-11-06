@@ -33,7 +33,6 @@
 .zero-point-enter:disabled { cursor:default; pointer-events:none; }
 .zero-point-core { width:9px; height:9px; border-radius:50%; background:#d5feff; box-shadow:0 0 12px #affdff,0 0 38px 10px #37c9ff77; opacity:.7; }
 .zero-point-hint { position:absolute; z-index:6; bottom:clamp(22px,4.5vh,48px); left:20px; right:20px; display:flex; align-items:center; justify-content:center; gap:14px; margin:0; color:#e6f7ff; text-shadow:0 2px 18px #02061b; font:400 18px/1.5 var(--type-ui); pointer-events:none; }
-.zero-point-hint span { color:#ffade0; font-size:24px; }
 .zero-point-screen[data-running=true] :is(.zero-point-world > img,.zero-point-clouds,.zero-point-reflection,.zero-point-horizon i,.zero-point-fallback-orbit,.zero-point-fallback-current) { animation-play-state:running; }
 .zero-point-screen[data-entering=true] .zero-point-world { opacity:.25; }
 @keyframes zero-world-drift { from { transform:scale(1.05) translateX(-1.2%); } to { transform:scale(1.05) translateX(1.2%); } }

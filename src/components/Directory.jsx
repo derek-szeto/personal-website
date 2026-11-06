@@ -1,7 +1,6 @@
 import { Component, lazy, Suspense, useCallback, useEffect, useRef, useState } from 'react';
 import { isAmbientPaused, subscribeAmbientPaused } from '../ambientMotion.js';
 import GroveFallback from './GroveFallback.jsx';
-import Arrow from './Arrow.jsx';
 const GroveCanvas = lazy(() => import('./GroveCanvas.jsx'));
 
 const destinations = [
@@ -80,7 +79,7 @@ export default function Directory({ introReady = true }) {
       <div className="grove-viewport" aria-hidden="true">{load && !failed && <SceneBoundary onFailure={onFailure}><Suspense fallback={null}><GroveCanvas nodes={nodes} activeId={activeId} running={running} night={night} onReady={onReady} onFailure={onFailure} /></Suspense></SceneBoundary>}</div>
       {nodes.map((node,index) => <a key={node.id} className={`grove-node${node.id === 'interests' ? ' interest-directory-card' : ''}`} href={node.href} data-destination={node.id} data-accent={index % 2 ? 'pink' : 'blue'} style={{ '--node-x':`${node.x}%`, '--node-y':`${node.y}%` }} onPointerEnter={() => setHoveredId(node.id)} onPointerLeave={() => setHoveredId(current => current === node.id ? null : current)} onPointerCancel={() => setHoveredId(null)} onFocus={() => setFocusedId(node.id)} onBlur={() => setFocusedId(current => current === node.id ? null : current)}>
         <GroveFallback type={node.id} />
-        <span className="grove-node-label">{node.label}<Arrow /></span>
+        <span className="grove-node-label">{node.label}</span>
       </a>)}
     </div>
   </nav>;

@@ -68,6 +68,6 @@ export default function ZeroPointScreen({ onEnter }) {
     <div className="zero-point-webgl" aria-hidden="true">{mounted && !failed && <EnergyBoundary onFailure={onFailure}><Suspense fallback={null}><ZeroPointCanvas running={running} reduced={Boolean(reduced)} entering={!present} onReady={onReady} onFailure={onFailure} onEntryProgress={onEntryProgress} /></Suspense></EnergyBoundary>}</div>
     <div className="zero-point-topline"><span className="zero-point-monogram" aria-hidden="true">DS<span /></span></div>
     <button ref={enter} className="zero-point-enter" type="button" onClick={onEnter} disabled={!present} aria-label="Enter the directory through the Zero Point" aria-describedby="zero-point-hint"><span className="zero-point-core" aria-hidden="true" /></button>
-    <p className="zero-point-hint" id="zero-point-hint">Explore who Derek Szeto is<span aria-hidden="true">↗</span></p>
+    <p className="zero-point-hint" id="zero-point-hint">Explore who Derek Szeto is</p>
   </motion.section>;
 }

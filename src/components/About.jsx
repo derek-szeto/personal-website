@@ -14,7 +14,7 @@ export default function About({ name, introduction, paragraphs = [], courses, po
           {paragraphs.map((paragraph, index) => <p key={index}>{paragraph}</p>)}
         </div>
         <CurrentClasses courses={courses} />
-        <a className="text-link about-interests-link" href="#/interests">Interests <span aria-hidden="true">&#8599;</span></a>
+        <a className="text-link about-interests-link" href="#/interests">Interests</a>
       </div>
       </div>
     </Section>
